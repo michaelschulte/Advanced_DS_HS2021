@@ -1,0 +1,52 @@
+---
+title: "Advanced Datascience für Marketing Research"
+subtitle: "<font style='font-style:normal;font-size:20px;padding-left:9.3px'>471802, Stand: `r paste(Sys.Date())`</font>"
+date:  " <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style= 'height:14.7px;vertical-align:baseline'/><a href='https://therbootcamp.github.io'>
+        <i class='fas fa-home' style='font-size:1em;'></i></a>
+      "
+author: "<font style='font-style:normal;font-size:20px;padding-left:9.3px'>HS 2021</font>"
+output:
+  html_document:
+    css: index.css
+    self_contained: no
+---
+
+# Der Plan
+
+## Teil 1 Wiederholung + Vorarbeit 
+
+|Datum|Thema|Input|Practicals|
+|:--:|:-|:--:|:--:|
+|01.10.| Willkommen! | [slides](_sessions/Welcome/Welcome.html) | | 
+|      | Wiederholung Wrangling | [slides](_sessions/Wrangling/Wrangling.html), [data sets](https://michaelschulte.github.io/Advanced_DS_HS2021/1_Data/ADS_HS2021_data.zip) | [practical](_sessions/Wrangling/Wrangling_practical.html), [solutions](_sessions/Wrangling/Wrangling_practical_solutions.html) |
+|      | Wiederholung Plotting | [slides](_sessions/Plotting/Plotting.html) | [practical](_sessions/Plotting/Plotting_practical.html), [solutions](_sessions/Plotting/Plotting_practical_solutions.html)|
+|15.10.| Recap | | | 
+|| Import komplexer Daten | [slides](_sessions/DataImportAdv/DataImportAdv.html)|[practical](_sessions/DataImportAdv/DataImportAdv_practical.html), [solutions](_sessions/DataImportAdv/DataImportAdv_practical_solutions.html)|  
+|| Web Scraping | [slides](_sessions/Scraping/Scraping.html) | [practical](_sessions/Scraping/Scraping_practical.html), [solutions](_sessions/Scraping/Scraping_practicaI_solutions.html)| 
+||Projekt Vorstellung|[slides](_sessions/ProjectIntro/ProjectIntro.html)|||
+|22.10.| Recap | | | 
+|| Sprachverarbeitung | [slides](_sessions/Language/LanguageI.html) | [practical](_sessions/Language/LanguageI_practical.html), [solutions](_sessions/PlottingII/PlottingII_practical_solutions.html)|
+|| Reporting | [slides](_sessions/Reporting/Reporting.html)| [practical](_sessions/Reporting/Reporting_practical.html), [solutions](_sessions/Reporting/Reporting_practical_solutions.html)||
+||Projekt Pitches|[slides](_sessions/ProjectIntro/ProjectPitches.html)|||
+
+## Teil 2 Projektarbeit
+
+|Datum|Thema|Input|Practicals|
+|:--:|:-|:--:|:--:|
+|29.10.| Recap | | | 
+|| Statistik I |[slides](_sessions/StatistikI/StatistikI.html)|[practical](_sessions/StatistikI/StatistikI_practical.html)| [solutions](_sessions/StatistikI/StatistikI_practical_solutions.html)|
+|| Statistik II |[slides](_sessions/StatistikII/StatistikII.html)|[practical](_sessions/StatistikII/StatistikII_practical.html)| [solutions](_sessions/StatistikII/StatistikII_practical_solutions.html)|
+||Projekt Arbeit||||
+|05.11.| Recap |||
+||Projekt Arbeit||||
+|26.11.| Projektpräsentationen || [feedback](https://forms.gle/38LagXxyH2cMHynt8), [evaluation]()| 
+||Next Steps|[Next steps](_sessions/NextSteps/NextSteps.html) |  | | 
+
+
+# Practicals
+
+Upload bitte in der Form: GRUPPE.zip spätestens bis Donnerstag 12.00 Uhr Mittag vor nächstem Kurstermin!
+
+Practicals immer als gesamtes R-Verzeichnis inkl .RProject File, Code, Plots usw hochladen. Code soll problemlos laufen!
+
+[Practical Upload](https://www.dropbox.com/request/Xy2d1iene4LATNdSmVzJ)

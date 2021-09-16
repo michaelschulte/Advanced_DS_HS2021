@@ -1,0 +1,1134 @@
+---
+title: "Wrangling"
+author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
+  <tr style='border:none'>
+    <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
+      <font style='font-style:normal'>Advanced Datascience mit R</font><br>
+    </td>
+    <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
+      <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
+    </td>
+  </tr></table>"
+output:
+  html_document:
+    css: practical.css
+    self_contained: no
+
+---
+
+```{r setup, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(comment = NA, 
+                      fig.width = 6, 
+                      fig.height = 6,
+                      fig.align = 'center',
+                      echo = FALSE, 
+                      eval = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE)
+
+options(digits = 3)
+library(tidyverse)
+appointments <- read_csv('1_Data/appointments.csv')
+kc_house <- read_csv(file = "1_Data/kc_house.csv")
+bevoelkerung <- read_csv(file = "1_Data/bevoelkerung.csv")
+```
+
+<p align="center" width="100%">
+  <img src="image/trial.jpg" alt="Trulli" style="width:100%;height:280px">
+  <br>
+  <font style="font-size:10px">from <a href="https://parkinsonsnewstoday.com/2016/02/24/promising-respiratory-drug-focus-of-new-clinical-trial-for-parkinsons-disease">parkinsonsnewstoday.com</a></font>
+</p>
+
+```{r, echo = FALSE, fig.align = 'center', eval = TRUE, out.width = "70%"}
+#knitr::include_graphics("")
+```
+
+# {.tabset}
+
+## Overview
+
+In diesem Practical wirst du üben Daten mit `dplyr` zu transformieren, organisieren und aggregieren. 
+
+Am Ende des Practicals wirst du wissen wie man:
+
+1. Spalten verändert, kreiert, auswählt.
+2. Fälle auswählt.
+3. Daten verbindet.
+4. Daten transformiert.
+5. Daten gruppiert und deskriptive Statistiken berechnet.
+
+## Aufgaben
+
+### A - Setup
+
+1. Öffne dein `TheRBootcamp` R project. Es sollte die Ordner `1_Data` und `2_Code` enthalten. Stelle sicher, dass du alle Datensätze, welche im `Datensätze` Tab aufgelisted sind, in deinem `1_Data` Ordner hast. 
+
+2. Öffne ein neues R Skript. Schreibe deinen Namen, das Datum und "Wrangling Practical" als Kommentare an den Anfang des Skripts.
+
+```{r, eval = FALSE}
+## NAME
+## DATUM
+## Wrangling Practical
+```
+
+3. Speichere das neue Skript unter dem Namen `wrangling_practical.R` im `2_Code` Ordner.
+
+4. Lade das `tidyverse` Paket.
+
+```{r, eval = FALSE}
+# Pakete laden
+library(tidyverse)     
+```
+
+```{r}
+library(tidyverse)
+```
+
+### B - Lade den Datensatz
+
+1. Verwende die `read_csv()` Funktion um den Datensatz `appointments` als Objekt `appointments` einzulesen. Denke an den Trick mit den Anführungszeichen. 
+
+```{r, echo = F}
+# Lese appointments
+appointments <- read_csv('1_Data/appointments.csv')
+```
+
+2. Printe den Datensatz. Wurden alle Variablentypen korrekt identifiziert?
+
+3. Verwende `summary()` um einen weiteren Überblick über die Daten zu bekommen.
+
+### C - Verändere Spaltennamen mit `rename()`
+
+1. Verwende `names()` um die Spaltennamen anzuzeigen.  
+
+```{r, eval = FALSE}
+# Zeige Spaltennamen
+names(XXX)
+```
+
+```{r}
+# Zeige Spaltennamen
+names(appointments)
+```
+
+2. Eine der Spalten hat aktuell den namen `Age`. Verwende `rename()` um den Namen in `alter_jahre` zu ändern, so dass klar ist, dass es sich um das Alter in Jahren handelt.   
+
+```{r, echo = TRUE, eval = FALSE}
+# Ändere Age zu alter_jahre
+appointments <- appointments %>%
+  rename(NEU = ALT)
+```
+
+```{r}
+# Ändere Age zu alter_jahre
+appointments <- appointments %>%
+  rename(alter_jahre = Age)
+```
+
+3. Verwende nochmals `names()` um dir die Namen anzeigen zu lassen. Hat sich der Name geändert?
+
+```{r}
+names(appointments)
+```
+
+4. Ergänze nun den Code unten, um alle Variablennamen ins Deutsche zu übersetzen.
+
+```{r}
+appointments <- appointments %>%
+  rename(patient = PatientId,
+         termin_id = AppointmentID,
+         geschlecht = Gender,
+         termin_vereinbart = ScheduledDay,
+         termin_tag = AppointmentDay,
+         geburtsort = Neighbourhood,
+         bluthochdruck = Hypertension,
+         diabetes = Diabetes,
+         alkoholismus = Alcoholism,
+         behinderung = Handicap,
+         sms_erhalten = SMS_received,
+         termin_eingehalten = NoShow)
+```
+
+5. Überprüfe mit `names()` ob alles stimmt.
+
+### D - Verändere Spalten mit `mutate()`
+
+1. Verwende `mutate()` um eine Spalte zu ergänzen, die das Alter in Monaten enthält, also `alter_jahre * 12` und nenne die Spalte `alter_monate`.  
+
+```{r, echo = TRUE, eval = FALSE}
+# Alter in Monaten
+appointments <- appointments %>%
+  mutate(XX = XX * 12)
+```
+
+```{r}
+# Alter in Monaten
+appointments <- appointments %>%
+  mutate(alter_monate = alter_jahre * 12)
+```
+
+2. Verwende `mutate()` um eine Spalte `krankheitsgrad` zu ergänzen, die anzeigt wie viele Erkrankungen der Patient hat. Addiere hierzu die Spalten `bluthochdruck`, `diabetes`, `alkoholismus`. Erinnere, dass gilt: `TRUE = 1` und `FALSE = 0`. 
+
+```{r, echo = TRUE, eval = FALSE}
+# Kreiere Krankheitsgrad
+appointments <- appointments %>%
+  mutate(XX = XX + XX + XX)
+```
+
+```{r}
+# Kreiere Krankheitsgrad
+appointments <- appointments %>%
+  mutate(krankheitsgrad = bluthochdruck + diabetes + alkoholismus)
+```
+
+3. Verwende `mutate()` und `case_when()` um eine Spalte `schwer_krank` zu ergänzen, die `Ja` trägt, wenn jemand einen Krankheitsgrad von grösser 1 hat, und sonst `Nein`.
+
+```{r, echo = FALSE, eval = FALSE}
+# Kreiere schwer_krank
+appointments <- appointments %>%
+  mutate(schwer_krank = case_when(
+    XX <= XX ~ "Nein",
+    XX  > XX ~ "Ja"
+    )
+  )
+```
+
+```{r}
+# Kreiere schwer_krank
+appointments <- appointments %>%
+  mutate(schwer_krank = case_when(
+    krankheitsgrad <= 1 ~ "Nein",
+    krankheitsgrad  > 1 ~ "Ja"
+    )
+  )
+```
+
+4. Verwende `mutate()` und `case_when()` um `M` und `F` in der Spalte `geschlecht` in `männlich` und `weiblich` zu verändern. Weise hierzu die entstehende Variable direkt wieder der Spalte `geschlecht` zu.
+
+```{r eval = FALSE, echo = FALSE}
+ Verändere geschlecht
+appointments <- appointments %>%
+  mutate(XX = case_when(
+    XX == XX ~ XX,
+    XX == XX ~ XX
+    )
+  )
+```
+
+
+```{r}
+# Verändere geschlecht
+appointments <- appointments %>%
+  mutate(geschlecht = case_when(
+    geschlecht == "M" ~ "männlich",
+    geschlecht == "F" ~ "weiblich"
+    )
+  )
+```
+
+5. Verwende `mutate()` und `case_when()` um `No` und `Yes` in der Spalte `termin_eingehalten` in `0` respektive `1` zu verändern. Kreiere hierzu eine neue Spalte mit Namen `termin_eingehalten_01`.  
+
+```{r eval = FALSE, echo = FALSE}
+# Termin eingehalten Yes = 1, No = 0
+appointments <- appointments %>%
+  mutate(XX = case_when(
+    XX == XX ~ XX,
+    XX == XX ~ XX
+    )
+  )
+```
+
+
+```{r}
+# Termin eingehalten Yes = 1, No = 0
+appointments <- appointments %>%
+  mutate(termin_eingehalten_01 = case_when(
+    termin_eingehalten == "No" ~ 0,
+    termin_eingehalten == "Yes" ~ 1,
+    )
+  )
+```
+6. Finde mit dem untenstehenden Code heraus, ob schwerkranke Patienten häufiger den Termin nicht wahrnehmen (verwende `termin_eingehalten_01`). Anmerkung: der Mittelwert einer binären Variable (0,1) entspricht dem Prozentsatz des betrachteten Merkmals! Wenn im Weiteren Zahlen abgebildet sind (zB `[1] 0.177`) sind dies die Ergebnisse, auf die Du auch kommen solltest.
+
+```{r, echo = FALSE, eval = FALSE}
+# Anteil nicht wahrgenommener Termine
+data_frame %>%
+  filter(XX == XX) %>%
+  pull(XX) %>%
+  mean()
+
+data_frame %>%
+  filter(XX != XX) %>%
+  pull(XX) %>%
+  mean()
+```
+
+```{r}
+# Anteil nicht wahrgenommener Termine
+appointments %>%
+  filter(schwer_krank == "Ja") %>%
+  pull(termin_eingehalten_01) %>%
+  mean()
+
+appointments %>%
+  filter(schwer_krank != "Ja") %>%
+  pull(termin_eingehalten_01) %>%
+  mean()
+```
+
+7. Vergleiche nun, ob es in den wahrgenommenen Terminen vielleicht Unterschiede zwischen Männern und Frauen gibt und ob es Unterschiede zwischen Patienten gibt, die mehr oder weniger als 360 Monate alt sind.  
+
+
+```{r}
+# Anteil nicht wahrgenommener Termine
+appointments %>%
+  filter(geschlecht == "männlich") %>%
+  pull(termin_eingehalten_01) %>%
+  mean()
+
+appointments %>%
+  filter(geschlecht != "männlich") %>%
+  pull(termin_eingehalten_01) %>%
+  mean()
+
+# Anteil nicht wahrgenommener Termine
+appointments %>%
+  filter(alter_monate >= 360) %>%
+  pull(termin_eingehalten_01) %>%
+  mean()
+
+appointments %>%
+  filter(alter_monate < 360) %>%
+  pull(termin_eingehalten_01) %>%
+  mean()
+```
+
+### E - Organisieren mit `select()`, `filter()`, `slice()`, und `arrange()` 
+
+1. Verwende `select()` um die Spalten `patient`, `geschlecht`, `alter_jahre`, `krankheitsgrad` und `termin_eingehalten_01` auszuwählen. Speichere den resultierenden data frame als `appointments_reduziert`.
+
+```{r, echo = TRUE, eval = FALSE}
+# Wähle Spalten aus
+appointments_reduziert <- appointments %>%
+  select(XX, XX, XX, XX, XX)
+```
+
+```{r}
+# Wähle Spalten aus
+appointments_reduziert <- appointments %>%
+  select(patient, geschlecht, alter_jahre, krankheitsgrad, termin_eingehalten_01)
+```
+
+2. Printe `appointments_reduziert`. Sind die richtigen Spalten enthalten?
+
+3. Verwende `filter()` um Fälle auszuwählen, in denen der Patient weiblich ist. Ergänze hierzu direkt die Pipeline. 
+
+```{r, echo = FALSE, eval = FALSE}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(XX, XX, XX, XX, XX) %>%
+  filter(XX == XX)
+```
+
+```{r}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(patient, geschlecht, alter_jahre, krankheitsgrad, termin_eingehalten_01) %>%
+  filter(geschlecht == 'weiblich')
+```
+
+4. Printe `appointments_reduziert$geschlecht`. Sind noch Männer enthalten?
+
+5. Ergänze die Pipeline um gleichzeitig nur Patienten auszuwählen, die über 30 Jahre alt sind. 
+
+```{r, echo = FALSE, eval = FALSE}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(XX, XX, XX, XX, XX) %>%
+  filter(XX == XX,
+         XX > XX)
+```
+
+```{r}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(patient, geschlecht, alter_jahre, krankheitsgrad, termin_eingehalten_01) %>%
+  filter(geschlecht == 'weiblich',
+         alter_jahre > 30)
+```
+
+6. Printe `appointments_reduziert$alter_jahre`. Sind noch Jüngere enthalten?
+
+7. Verwende `arrange()` um den `appointments_reduziert` Datensatz aufsteigend nach Alter zu ordnen. Ergänze die Pipeline. 
+
+```{r, echo = FALSE, eval = FALSE}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(XX, XX, XX, XX, XX) %>%
+  filter(XX == XX,
+         XX > XX) %>%
+  arrange(XX)
+```
+
+```{r}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(patient, geschlecht, alter_jahre, krankheitsgrad, termin_eingehalten_01) %>%
+  filter(geschlecht == 'weiblich',
+         alter_jahre > 30) %>%
+  arrange(alter_jahre)
+```
+
+8. Printe `appointments_reduziert` und `appointments_reduziert$alter_jahre`. Ist alles schön sortiert?
+
+9. Verwende `arrange()` und `desc()` um diesmal `appointments_reduziert` absteigend (descending) nach Alter zu ordnen. 
+
+```{r, echo = FALSE, eval = FALSE}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(XX, XX, XX, XX, XX) %>%
+  filter(XX == XX,
+         XX > XX) %>%
+  arrange(desc(XX))
+```
+
+```{r}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(patient, geschlecht, alter_jahre, krankheitsgrad, termin_eingehalten_01) %>%
+  filter(geschlecht == 'weiblich',
+         alter_jahre > 30) %>%
+  arrange(desc(alter_jahre))
+```
+
+10. Printe `appointments_reduziert` und `appointments_reduziert$alter_jahre`. Ist alles schön sortiert?
+
+11. Verwende `arrange()` und `desc()` um `appointments_reduziert` ebenfalls, absteigend (descending) nach `krankheitsgrad` zu ordnen. 
+
+```{r, echo = FALSE, eval = FALSE}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(XX, XX, XX, XX, XX) %>%
+  filter(XX == XX,
+         XX > XX) %>%
+  arrange(desc(XX),
+          desc(XX))
+```
+
+```{r}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(patient, geschlecht, alter_jahre, krankheitsgrad, termin_eingehalten_01) %>%
+  filter(geschlecht == 'weiblich',
+         alter_jahre > 30) %>%
+  arrange(desc(alter_jahre),
+          desc(krankheitsgrad))
+```
+
+12. Printe `appointments_reduziert` und `appointments_reduziert$krankheitsgrad`. Ist alles schön sortiert?
+
+13. Ändere die Reihenfolge von `krankheitsgrad` und  `alter_jahre` in der `arrange()` Funktion um primär nach `krankheitsgrad` zu sortieren. 
+
+```{r, echo = FALSE, eval = FALSE}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(XX, XX, XX, XX, XX) %>%
+  filter(XX == XX,
+         XX > XX) %>%
+  arrange(desc(XX),
+          desc(XX))
+```
+
+```{r}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(patient, geschlecht, alter_jahre, krankheitsgrad, termin_eingehalten_01) %>%
+  filter(geschlecht == 'weiblich',
+         alter_jahre > 30) %>%
+  arrange(desc(krankheitsgrad),
+          desc(alter_jahre))
+```
+
+14. Verwende `slice()` um die ersten zwanzig Fälle in `appointments_reduziert` auszuwählen. Ergänze die Pipeline.
+
+```{r, echo = FALSE, eval = FALSE}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(XX, XX, XX, XX, XX) %>%
+  filter(XX == XX,
+         XX > XX) %>%
+  arrange(desc(XX),
+          desc(XX)) %>%
+  slice(XX:XX)
+```
+
+```{r}
+# Wähle Fälle aus
+appointments_reduziert <- appointments %>%
+  select(patient, geschlecht, alter_jahre, krankheitsgrad, termin_eingehalten_01) %>%
+  filter(geschlecht == 'weiblich',
+         alter_jahre > 30) %>%
+  arrange(desc(krankheitsgrad),
+          desc(alter_jahre)) %>%
+  slice(1:20)
+```
+
+15. Printe `appointments_reduziert`. Sind es nun 20 Fälle? Sind die ausgewählten Fälle zum Termin erschienen?
+
+### F - Verbinde Datensätze mit `*_join()`
+
+1. Verwende die `read_csv()` Funktion um den Datensatz `weather`, welcher Daten über das Wetter in Brasilien enthält, als Objekt `weather` einzulesen. Denke an den Trick mit den Anführungszeichen. 
+
+```{r, echo = F}
+# Lese weather
+weather <- read_csv('1_Data/weather.csv')
+```
+
+2. Printe den Datensatz. Wurden alle Variablentypen korrekt identifiziert?
+
+3. Verwende `summary()` um einen weiteren Überblick über die Daten zu bekommen.
+
+4. Verwende `select()` und `rename()` um die Spalten `YYYYMMDD` und `PRECTOT` auszuwählen und sie in `termin_tag` und `niederschlag` umzubenennnen. Nenne das resultierende Objekt `weather_reduziert`
+
+```{r, echo = FALSE, eval = FALSE}
+# Verarbeite weather
+weather_reduziert <- weather %>%
+  select(XX, XX) %>%
+  rename(XX = XX,
+         XX = XX) 
+```
+
+```{r}
+# Verarbeite weather
+weather_reduziert <- weather %>%
+  select(YYYYMMDD, PRECTOT) %>%
+  rename(termin_tag = YYYYMMDD,
+         niederschlag = PRECTOT) 
+```
+
+5. Printe `weather_reduziert`. Ist alles wie gewünscht?
+
+6. Verwende `left_join()` um `weather_reduziert` mit den Spalten `termin_tag` und `termin_eingehalten` in `appointments` zu verbinden. Nenne den gemeinsamen Datensatz `appointments_weather`. 
+
+```{r, echo = TRUE, eval = FALSE}
+# Verbinde Datensätze
+appointments_weather <- appointments %>%
+  select(XX, XX) %>%
+  left_join(XX)
+```
+
+```{r}
+# Verbinde Datensätze
+appointments_weather <- appointments %>%
+  select(termin_tag, termin_eingehalten) %>%
+  left_join(weather_reduziert)
+```
+
+7. Printe `appointments_weather`. Ist alles in Ordnung?
+
+8. Verwende `select()` um nach dem Verbinden die Spalten in die folgende Reihenfolge zu bringen: `termin_tag`, `niederschlag`, und `termin_eingehalten`. 
+
+```{r, echo = FALSE, eval = FALSE}
+# Verbinde Datensätze
+appointments_weather <- appointments %>%
+  select(XX, XX) %>%
+  left_join(XX) %>%
+  select(XX, XX, XX)
+```
+
+```{r}
+# Verbinde Datensätze
+appointments_weather <- appointments %>%
+  select(termin_tag, termin_eingehalten) %>%
+  left_join(weather_reduziert) %>%
+  select(termin_tag, niederschlag, termin_eingehalten)
+```
+
+9. Printe `appointments_weather`. Ist alles in Ordnung?
+
+10. Erstelle im nächsten Schritt der Pipeline erneut eine Variable `termin_eingelten_01` genauso wie du das vorher bereits einmal gemacht hast. Erstelle ausserdem eine Variable `niederschlag_01` die anzeigt, ob es Niederschlag gab oder nicht. 
+
+```{r, echo = FALSE, eval = FALSE}
+# Verbinde Datensätze
+appointments_weather <- appointments %>%
+  select(XX, XX) %>%
+  left_join(XX) %>%
+  select(XX, XX, XX) %>%
+  mutate(
+    termin_eingehalten_01 = case_when(
+      XX == XX ~ XX,
+      XX == XX ~ XX,
+      ),
+    niederschlag_01 = case_when(
+      XX == 0 ~ 0,
+      XX > 0 ~ 1,
+      )
+  )
+```
+
+```{r}
+# Verbinde Datensätze
+appointments_weather <- appointments %>%
+  select(termin_tag, termin_eingehalten) %>%
+  left_join(weather_reduziert) %>%
+  select(termin_tag, niederschlag, termin_eingehalten) %>%
+  mutate(
+    termin_eingehalten_01 = case_when(
+      termin_eingehalten == "No" ~ 0,
+      termin_eingehalten == "Yes" ~ 1,
+      ),
+    niederschlag_01 = case_when(
+      niederschlag == 0 ~ 0,
+      niederschlag > 0 ~ 1,
+      )
+    )
+```
+
+11. Printe `appointments_weather`. Ist alles in Ordnung?
+
+12. Finde nun mit Hilfe des untenstehenden Codes heraus, ob Termine bei Regen seltener eingehalten wurden.  
+
+```{r, echo = TRUE, eval = FALSE}
+# Anteil nicht wahrgenommener Termine
+data_frame %>%
+  filter(XX == XX) %>%
+  pull(XX) %>%
+  mean()
+
+data_frame %>%
+  filter(XX != XX) %>%
+  pull(XX) %>%
+  mean()
+```
+
+```{r}
+# Anteil nicht wahrgenommener Termine
+appointments_weather %>%
+  filter(niederschlag_01 == 1) %>%
+  pull(termin_eingehalten_01) %>%
+  mean()
+
+appointments_weather %>%
+  filter(niederschlag_01 != 1) %>%
+  pull(termin_eingehalten_01) %>%
+  mean()
+```
+
+
+### G - Transformation von *Long* zu *Wide* Format 
+
+In diesem Teil verwenden wir zunächst den `bevoelkerung.csv` Datensatz. Er enthält die Einwohnerzahlen verschiedener Schweizer Städte von 1930 bis 2011. Im `Datensätze` Tab findest du eine Auflistung und eine kurze Beschreibung der im Datensatz enthaltenen Variablen. 
+
+1. Lese den Datensatz mit der `read_csv()` Funktion in R ein und speichere ihn unter dem Namen `bevoelkerung`.
+
+```{r}
+bevoelkerung <- read_csv(file = "1_Data/bevoelkerung.csv")
+```
+
+2. Mache dich mit dem Datensatz vertraut in dem du die ersten paar Zeilen (`print()`) und die Variablennamen (`names()`) anschaust.
+
+```{r}
+names(bevoelkerung)
+bevoelkerung
+```
+
+3. Im Moment sind die Daten so angeordnet, dass jedes Jahr eine einzelne Spalte hat, also im *Wide* Format; wir brauchen sie aber im *Long* format, z.B. fürs Plotting. Verwende `pivot_longer()` um das Format zu wechseln. Verwende `"st_wbev_2011"` und `"st_wbev_2001"` für das `cols` Argument und `"jahr"` das `names_to` Argument und speichere das Resultat als neues Objekt `bevoelkerung_long` ab.
+
+```{r eval = FALSE}
+# Transofmation vom Wide ins Long Format
+bevoelkerung_long <- bevoelkerung %>%
+  pivot_longer(cols = c("XX", "XX"), names_to = "XX")
+```
+
+```{r}
+# Transofmation vom Wide ins Long Format
+bevoelkerung_long <- bevoelkerung %>%
+  pivot_longer(cols = c("st_wbev_2011", "st_wbev_2001"), names_to = "jahr")
+
+```
+
+4. Printe den neu erstellten Datensatz an. Alles wie erwartet?
+
+5. Nun wollen wir nicht nur die Jahre 2001 und 2011, sondern alle im Datensatz vorhandenen Jahre ins Long Format bringen. Schaue dir nochmals die Namen der Spalten an.
+
+```{r echo = FALSE}
+names(bevoelkerung)
+```
+
+6. Jede Jahr-Variable hat die gleiche Struktur, nämlich `st_wbev_XXX`. Das bedeutet, dass wir einfach `starts_with()` Funktion zur Variablenauswahl verwenden können. Benutze `pivot_longer()` und `starts_with()` um alle Jahr-Variablen zu transformieren.
+
+```{r eval = FALSE, echo = FALSE}
+# Transofmation vom Wide ins Long Format
+bevoelkerung_long <- bevoelkerung %>%
+  pivot_longer(cols = starts_with("XX"), names_to = "XX")
+```
+
+```{r}
+bevoelkerung_long <- bevoelkerung %>%
+  pivot_longer(cols = starts_with("st_"), names_to = "jahr")
+```
+
+7. Printe nochmal `bevoelkerung_long`.
+
+8. Die Einwohnerzahl ist im neuen Datensatz mit dem Standardwert `value` benannt. Führe nun nochmal die `pivot_longer` Funktion aus, verwende nun aber auch noch das `values_to` Argument um die neue Spalte `einwohner` zu nennen. 
+
+```{r eval = FALSE, echo = TRUE}
+# Transofmation vom Wide ins Long Format
+bevoelkerung_long <- bevoelkerung %>%
+  pivot_longer(cols = starts_with("XX"), names_to = "XX", values_to = "XX")
+```
+
+```{r}
+bevoelkerung_long <- bevoelkerung %>%
+  pivot_longer(cols = starts_with("st_"), names_to = "jahr", values_to = "einwohner")
+```
+
+9. Schaue dir das Resultat an. Alles in Ordnung?
+
+10. Verwende nun das `names_prefix` Argument um die Präfixe der Jahreszahlen automatisch zu entfernen.  
+
+```{r}
+bevoelkerung_long <- bevoelkerung %>%
+  pivot_longer(starts_with("st_"), names_to = "jahr", values_to = "einwohner",
+               names_prefix = "st_wbev_")
+```
+
+### H - Transformation von *Long* zu *Wide* Format 
+
+Lass uns nun so tun, als ob wir die Daten im Long Format (`bevoelkerung_long`) bekommen hätten und sie ins Wide Format umwandeln müssten. Verwende die `pivot_wider()` Funktion und den Argumenten `names_from` und `values_from` die Spalten `jahr` und `einwohner` zu. Speichere das Ergebnis als `bevoelkerung_wide` ab.
+
+```{r eval = FALSE}
+# Transofmation vom Long ins Wide Format
+bevoelkerung_wide <- bevoelkerung_long %>%
+  pivot_wider(names_from = XX, values_from = XX)
+```
+
+```{r}
+bevoelkerung_wide <- bevoelkerung_long %>%
+  pivot_wider(names_from = jahr, values_from = einwohner)
+```
+
+1. Vergleiche `bevoelkerung_wide` mit `bevoelkerung`. War die Rücktransformation erfolgreich? Was fehlt?
+
+2. Um die zuvor entfernten Präfixe wieder bei den Variablennamen hinzuzufügen, kannst du das `names_prefix` argument in `pivot_wider()` verwenden. Benutze `names_prefix` um `"st_wbev_"` als Präfix hinzuzufügen. 
+
+```{r, eval = FALSE, echo = TRUE}
+bevoelkerung_wide <- bevoelkerung_long %>%
+  pivot_wider(names_from = XXX, 
+              values_from = XXX,
+              names_prefix = "XXX")
+```
+
+```{r}
+bevoelkerung_wide <- bevoelkerung_long %>%
+  pivot_wider(names_from = jahr, 
+              values_from = einwohner,
+              names_prefix = "st_wbev_")
+```
+
+### I - Neuer Datensatz - neue Fragen
+
+Für den Rest des Practicals verwenden wir den `kc_house.csv` Datensatz. Er enthält Verkaufspreise von Häusern in King County, Washington. Aufgelistet sind Häuser, welche zwischen Mai 2014 und Mai 2015 verkauft wurden. Nebst den Verkaufspreisen enthält der Datensatz Spezifikationen der Häuser, z.B. die Anzahl Zimmer eines Hauses. 
+
+1. Lese den Datensatz mit der `read_csv()` Funktion in R ein und speichere ihn unter dem Namen `kc_house`.
+
+```{r}
+kc_house <- read_csv(file = "1_Data/kc_house.csv")
+```
+
+2. Printe den Datensatz und verwende `summary()` und `names()` um einen Eindruck über dessen Struktur zu erhalten.
+
+```{r}
+kc_house
+summary(kc_house)
+```
+
+3. Da es sich um einen US Datensatz handelt, sind die Flächenangaben in Quadratfuss angegeben. Wir als "rest of the world" sind natürlich es eher gewohnt in Quadratmeter zu denken. Kreiere dazu drei neue Variablen `qm_wohnraum`, `qm_dachstock` und `qm_keller`, welche die jeweilige Raumgrösse in Quadratmeter angeben. Ein Quadratfuss entspricht 0.093 Quadratmeter.
+
+```{r eval = FALSE}
+kc_house <- kc_house %>%
+  mutate(XX = XX * 0.093,
+         XX = XX * 0.093,
+         XX  = XX * 0.093)
+```
+
+```{r, eval = TRUE}
+kc_house <- kc_house %>%
+  mutate(qm_wohnraum = qf_wohnraum * 0.093,
+         qm_dachstock = qf_dachstock * 0.093,
+         qm_keller  = qf_keller * 0.093)
+```
+
+4. Kreiere wiederum mit `mutate()` eine neue Spalte `qm_total`, welche die Summe aus `qm_wohnraum`, `qm_dachstock` und `qm_keller` darstellt.
+
+```{r, eval = TRUE}
+kc_house <- kc_house %>%
+  mutate(qm_total = qm_wohnraum + qm_dachstock + qm_keller)
+```
+
+5. Füge eine neue Variable `villa` hinzu (mit `mutate()`), welche den Wert "ja" annimmt, wenn `qm_total` grösser als 750 ist und "nein", wenn `qm_total` kleiner oder gleich 750 ist.
+
+```{r, eval = TRUE}
+kc_house <- kc_house %>%
+                mutate(villa = case_when(
+                              qm_total > 750 ~ "ja",
+                              qm_total <= 750~ "nein"))
+```
+
+
+### J - `summarise`
+
+1. Unter Verwendung der base-R `data$col` Notation, berechne den Mittelwert über alle Hauspreise.
+
+```{r}
+mean(kc_house$preis)
+```
+
+2. Berechne wieder den Mittelwert aber verwende diesmal `summarise()` Funktion. Worin besteht der Unterschied der Resultate dieser und der vorherigen Aufgabe?
+
+```{r, echo = FALSE, eval = FALSE}
+kc_house %>%
+  summarise(
+    XX = mean(XX)
+  )
+```
+
+```{r}
+kc_house %>%
+  summarise(
+    preis_mean = mean(preis)
+  )
+```
+
+3. Wie hoch ist der höchste Verkaufspreis? Verwende die `max()` Funktion.
+
+```{r}
+kc_house %>%
+  summarise(
+    preis_max = max(preis)
+  )
+```
+
+4. Sortiere mittels der `arrange()` und der `desc()` Funktion den Datensatz nach `preis` in absteigender Reihenfolge und printe das Resultat. Richtig sortiert?
+
+```{r}
+kc_house <- kc_house %>%
+  arrange(desc(preis))
+
+kc_house
+```
+
+5. Wie gross ist der Anteil an Häuser, welche für mehr als 1 Million USD verkauft wurden? 
+
+```{r eval = FALSE}
+kc_house %>%
+  summarise(million_prozent = mean(XX > XX))
+```
+
+```{r}
+kc_house %>%
+  summarise(million_prozent = mean(preis > 1000000))
+```
+
+6. Berechne die mittlere Anzahl Stockwerke (`stoecke`) und Badezimmer (`badezimmer`) von Villen (`villa`). Verwende erst `filter()` um Villen auszuwählen und danach `summarise()`.
+
+```{r}
+kc_house %>%
+  filter(villa == "ja") %>%
+  summarise(
+    stoecke_mean = mean(stoecke),
+    badezimmer_mean = mean(badezimmer)
+  )
+```
+
+### K - `group_by` und `summarise` 
+
+1. Verwende `group_by()` und `n()` um zu berechnen wie viele Villen und wie viele normale Häuser (nicht-Villen) im Datensatz vorhanden sind. 
+
+```{r eval = FALSE}
+kc_house %>%
+  group_by(XX) %>%
+  summarise(N = XX)
+```
+
+```{r}
+kc_house %>%
+  group_by(villa) %>%
+  summarise(N = n())
+```
+
+2. Ergänze nun einen Eintrag in `summarise()` die den mittlere Verkaufspreis von Villen und normalen Häusern (nicht-Villen) berechnet?
+
+```{r}
+kc_house %>%
+  group_by(villa) %>%
+  summarise(N = n(),
+            preis_mean = mean(preis))
+```
+
+3. Verwende nun `group_by()` und `summarise()` um auch noch das Maximum zu bestimmen.
+
+```{r}
+kc_house %>%
+  group_by(villa) %>%
+  summarise(N = n(),
+            preis_min = min(preis),
+            preis_mean = mean(preis),
+            preis_max = max(preis))
+```
+
+4. Haben Häuser, welche später gebaut wurden, eine grössere Wohnfläche? Gruppiere zur Beantwortung dieser Frage die Daten nach `baujahr` und berechne dann die mittlere Wohnfläche (`qm_wohnraum`).
+
+```{r}
+kc_house %>%
+  group_by(baujahr) %>%
+  summarise(N = n(),
+            wohnraum = mean(qm_wohnraum))
+```
+
+5. Kreiere eine neue Variable `baujahrzehnt`, welche angibt, in welchem Jahrzehnt ein Haus gebaut wurde und erstelle dann die Tabelle der letzten Aufgabe Gruppiert nach dieser neuen Variable. Tipp: die `floor()` Funktion rundet eine Zahl auf die nächst kleinere ganze Zahl ab.
+
+```{r}
+kc_house %>%
+  mutate(baujahrzehnt = floor(baujahr / 10) * 10) %>%
+  group_by(baujahrzehnt) %>%
+  summarise(N = n(),
+            wohnraum = mean(qm_wohnraum))
+```
+
+### L - Mehrere Gruppen
+
+1. Dein Freund Theodorus interessiert sich für Häuser einer bestimmten Gegend, nämlich mit den Postleitzahlen (`postleitzahl`) 98001, 98109, 98117 und 98199. Stelle ihm einen neuen Datensatz `theodorus` zusammen, welcher nur die Häuser dieser Gegend enthält. Tipp: der `%in%` Operator testet ob Elemente des Vektors auf der rechten Seite im Vektor auf der linken Seite enthalten sind.
+
+```{r eval = FALSE}
+theodorus <- kc_house %>%
+  filter(XX %in% c(XX, XX, XX, XX))
+```
+
+```{r}
+theodorus <- kc_house %>%
+  filter(postleitzahl %in% c(98001, 98109, 98117, 98199))
+```
+
+2. Berechne für Theodorus den mittleren, den den Minimum-, den Maximumpreis, sowie die Anzahl Häuser pro Gruppe, separat für die Postleitzahlen und ob es eine Villa ist.
+
+```{r}
+theodorus %>%
+  group_by(postleitzahl, villa) %>%
+  summarise(preis_mean = mean(preis),
+            stoecke_min = min(stoecke),
+            stoecke_max = max(stoecke),
+            N = n())
+```
+
+
+### X - Challenges
+
+1. Welche Postleitzahl hat den höchsten Anteil Häuser, welche am Ufer gebaut sind (`ufer`)? Printe nur diese Zeile des Datensatzes.
+
+```{r}
+kc_house %>%
+  group_by(postleitzahl) %>%
+  summarise(ufer_p = mean(ufer)) %>%
+  arrange(desc(ufer_p)) %>%
+  slice(1)
+```
+
+2. Welches Haus hat das schlechteste Preis-Wohnraumgrösse Verhältnis? Printe nur diese Zeile des Datensatzes.
+
+```{r}
+kc_house %>%
+  mutate(preis_zu_flaeche = preis / qm_wohnraum) %>%
+  arrange(desc(preis_zu_flaeche)) %>%
+  slice(1)
+```
+
+3. Welche 10 Postleitzahlen haben im Schnitt die höchsten Hauspreise? Printe nur diese 10 Zeilen.
+
+```{r}
+kc_house %>%
+  group_by(postleitzahl) %>%
+  summarise(preis_mean = mean(preis)) %>%
+  arrange(desc(preis_mean)) %>%
+  slice(1:10)
+```
+
+4. Kreiere den folgenden Datensatz *genau* wie er unten steht.
+
+```{r, eval = FALSE}
+kc_house %>%
+  filter(baujahr >= 1990 & baujahr < 1999) %>%
+  group_by(baujahr) %>%
+  summarise(N = n(),
+            preis_mean = mean(preis),
+            preis_max = max(preis),
+            qm_wohnraum_mean = mean(qm_wohnraum)) %>%
+  knitr::kable(digits = 0)
+```
+
+| baujahr|   N| preis_mean| preis_max| qm_wohnraum_mean|
+|--------:|---:|----------:|---------:|---------------:|
+|     1990| 320|     563966|   3640900|             234|
+|     1991| 224|     630441|   5300000|             244|
+|     1992| 198|     548169|   2480000|             223|
+|     1993| 202|     556612|   3120000|             226|
+|     1994| 249|     486834|   2880500|             209|
+|     1995| 169|     577771|   3200000|             224|
+|     1996| 195|     639534|   3100000|             240|
+|     1997| 177|     606058|   3800000|             234|
+|     1998| 239|     594159|   1960000|             241|
+
+```{r}
+kc_house %>%
+  filter(baujahr >= 1990 & baujahr < 1999) %>%
+  group_by(baujahr) %>%
+  summarise(N = n(),
+            preis_mean = mean(preis),
+            preis_max = max(preis),
+            qm_wohnraum_mean = mean(qm_wohnraum)) %>%
+  knitr::kable(digits = 0)
+```
+
+## Datensätze
+
+```{r, eval = TRUE, message = FALSE, echo = FALSE}
+library(tidyverse)
+appointments <- read_csv("1_Data/appointments.csv")
+weather <- read_csv("1_Data/weather.csv")
+
+```
+
+|Datei | Zeilen | Spalten | Beschreibung | 
+|:----|:-----|:------|:------|
+|[appointments.csv](https://github.com/therbootcamp/R4DS_2019Feb/blob/master/1_Data/appointments.csv?raw=true)| `r nrow(appointments)` | `r ncol(appointments)`| Datensatz zu eingehalten Arztterminen in Brasilien |
+|[weather.csv](https://github.com/therbootcamp/R4DS_2019Feb/blob/master/1_Data/weather.csv?raw=true)| `r nrow(weather)` | `r ncol(weather)`| Datensatz zum Wetter in Brasilien zur selben Zeit wie in `appointments.csv`  |
+|[kc_house.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/kc_house.csv) | 21613 | 11|Verkaufspreise von Häusern in King County zwischen Mai 2014 und Mai 2015. |
+|[bevoelkerung.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/kc_house.csv) | 161 | 10|Einwohnerzahlen Schweizer Städte von 1930 bis 2011. |
+
+#### appointments.csv
+
+*Erste 5 Zeilen von appointments.csv*
+
+```{r, eval = TRUE}
+knitr::kable(appointments[1:5,])
+```
+
+|Variable | Beschreibung |
+|:--------|:-----------------------------|
+|PatientId | ID des Patienten |
+|AppointmentID | ID des Arzttermins |
+|Gender | M = Männlich, F = Weiblich|
+|ScheduledDay | Der Tag an dem der Termin vereinbart wurde |
+|AppointmentDay | Der Tag des Arzttermins |
+|Age | Wie alt ist der Patient |
+|Neighbourhood | Wo wurde der Patient geboren |
+|Hypertension | Bluthochdruck Ja, Nein |
+|Diabetes | Diabetes Ja, Nein |
+|Alcoholism | Alcoholismus Ja, Nein |
+|Handcap | Behinderung - Stufen 1 bis 4, 1 niedrigstes Level |
+|SMS_received | Hat der Patient eine Erinnerung per SMS erhalten? |
+|No-show | Ist der Patient zum Termin erschienen?|
+
+#### weather.csv
+
+*Erste 5 Zeilen von weather.csv*
+
+```{r, eval = TRUE}
+knitr::kable(weather[1:5,])
+```
+
+|Variable | Beschreibung |
+|:--------|:-----------------------------|
+|LON  |Längengrad|
+|LAT  |Breitengrad|
+|YEAR  | Jahr| 
+|MM    | Monat|
+|DD   | Tag|
+|DOY | Tag des Jahres|
+|YYYYMMDD | Datum|    
+|RH2M   |Relative Feuchtigkeit auf 2 Metern|
+|T2M | Temperatur auf 2 Metern|
+|PRECTOT | Niederschlag|
+
+#### kc_house.csv
+
+*Erste 5 Zeilen und 5 Spalten von kc_house.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(kc_house[1:5, 1:5])
+```
+
+|Variable | Beschreibung |
+|:--------|:-----------------------------|
+|preis  | Preis in USD| 
+|schlafzimmer    | Anzahl Schlafzimmer|
+|badezimmer   | Anzahl Badezimmer|
+|qf_wohnraum | Wohnraumfläche in Quadratfuss|
+|qf_parzelle | Parzellengrösse in Quadratfuss|    
+|stoecke   |Anzahl Stöcke|
+|ufer | Ist das Haus am Ufer gebaut (1) oder nicht (0)|
+|qf_dachstock | Dachstockfläche in Quadratfuss|
+|qf_keller | Kellerfläche in Quadratfuss|
+|baujahr | Baujahr|
+|postleitzahl | Postleitzahl|
+
+
+#### bevoelkerung.csv
+
+*Erste 5 Zeilen und 5 Spalten von bevoelkerung.csv*
+
+```{r, eval = TRUE, echo = FALSE}
+knitr::kable(bevoelkerung[1:5, 1:5])
+```
+
+|Variable | Beschreibung |
+|:--------|:-----------------------------|
+|Stadtname  |Name der Stadt|
+|st_wbev_2011  |Wohnbevölkerung im Jahr 2011|
+|st_wbev_2001  | Wohnbevölkerung im Jahr 2001| 
+|proz_ver-2001–2011    | Veränderung der Einwohnerzahl in Prozent zwischen 2001 und 2011|
+|bevdichte   | Bevölkerungsdichte|
+|st_wbev_1930 | Wohnbevölkerung im Jahr 1930|
+|st_wbev_1970 | Wohnbevölkerung im Jahr 1970|    
+|st_wbev_1980   |Wohnbevölkerung im Jahr 1980|
+|st_wbev_1990 | Wohnbevölkerung im Jahr 1990|
+|st_wbev_2000 | Wohnbevölkerung im Jahr 2000|
+
+
+## Funktionen
+
+### Pakete
+
+|Package| Installation|
+|:------|:------|
+|`tidyverse`|`install.packages("tidyverse")`|
+
+### Funktionen
+
+| Function| Package | Description |
+|:---|:------|:---------------------------------------------|
+|     `rename()`|`dplyr`|    Spalten umbenennen| 
+|     `select()`|`dplyr`|    Spalten auswählen | 
+|     `filter()`, `slice()`|`dplyr`|  Fälle auswählen| 
+|     `arrange()`|`dplyr`|    Fälle sortieren | 
+|     `mutate()`|`dplyr`|    Spalten verändern / kreieren |
+|     `case_when()`|`dplyr`| Rekodiere Spalten | 
+|     `group_by(), summarise()`|`dplyr`|   Gruppierung von Daten zur Berechnung deskriptiver Statistiken|
+|     `pivot_longer()`|`tidyr`|   Transformation vom Wide ins Long Format|
+|     `pivot_wider()`|`tidyr`|   Transformation vom Long ins Wide Format|
+
+
+## Resourcen
+
+### `dplyr` vignette
+
+Siehe die `dplyr` [**vignette**](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html).
+
+### Cheatsheet
+
+<p align="center" width="100%">
+<a href="image/data-wrangling-cheatsheet.pdf" download>
+  <img src="image/wrangling_cheat.jpg" style="width:70%"></a>
+  <br>
+  <font style="font-size:10px">from <a href="https://www.rstudio.com/resources/cheatsheets/">R Studio</a></font>
+</p>
