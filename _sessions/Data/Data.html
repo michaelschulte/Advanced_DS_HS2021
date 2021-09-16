@@ -819,7 +819,7 @@ dbListTables(con)
 
 
 ```r
-# Extrahiere Tabelle Customers
+# Extrahiere Tabelle Baselers
 basel &lt;- tbl(con, "basel")
 basel
 ```
@@ -860,10 +860,10 @@ basel
 
 
 ```r
-# Extrahiere Tabelle Customers
+# Extrahiere Tabelle Baselers
 basel &lt;- tbl(con, "basel")
 
-# Extrahiere CompanyNamer Variable
+# Filtere Gewicht
 basel %&gt;% 
   filter(gewicht &gt; 0)
 ```
@@ -902,10 +902,10 @@ basel %&gt;%
 
 
 ```r
-# Extrahiere Tabelle Customers
+# Extrahiere Tabelle Baselers
 basel &lt;- tbl(con, "basel")
 
-# Extrahiere CompanyNamer Variable
+# Filtere Gewicht und Plotte
 basel %&gt;% 
   filter(gewicht &gt; 0) %&gt;%
   ggplot(aes(alter_jahre, gewicht)) +
@@ -1006,6 +1006,7 @@ gapminder
 ```
 ]
 ---
+
 # Google sheets &lt;font style="font-size: 16px"&gt;mit &lt;a href="https://googlesheets4.tidyverse.org/index.html"&gt;&lt;mono&gt;googlesheets4&lt;/mono&gt;&lt;/a&gt; und &lt;a href="https://googledrive.tidyverse.org/index.html"&gt;&lt;mono&gt;googledrive&lt;/mono&gt;&lt;/a&gt;&lt;/font&gt; 
 
 .pull-left45[
@@ -1042,9 +1043,10 @@ my_sheet &lt;- gs4_create("baselers",
 &lt;br&gt;&lt;br&gt;
 &lt;img src="image/result_write_sheet.png" width="500", align="right"&gt; 
 ]
+
 ---
 
-# Google sheets &lt;font style="font-size: 16px"&gt;mit &lt;a href="https://googlesheets4.tidyverse.org/index.html"&gt;&lt;mono&gt;googlesheets4&lt;/mono&gt;&lt;/a&gt; und &lt;a href="https://googledrive.tidyverse.org/index.html"&gt;&lt;mono&gt;googledrive&lt;/mono&gt;&lt;/a&gt;&lt;/font&gt;  
+# Google sheets &lt;font style="font-size: 16px"&gt;mit &lt;a href="https://googlesheets4.tidyverse.org/index.html"&gt;&lt;mono&gt;googlesheets4&lt;/mono&gt;&lt;/a&gt; und &lt;a href="https://googledrive.tidyverse.org/index.html"&gt;&lt;mono&gt;googledrive&lt;/mono&gt;&lt;/a&gt;&lt;/font&gt; 
 
 .pull-left45[
 
@@ -1062,7 +1064,6 @@ my_sheet &lt;- gs4_create("baselers",
 ]
 
 .pull-right45[
-
 
 
 ```r
@@ -1084,7 +1085,9 @@ my_sheet %&gt;% sheet_append(new_row)
 ```
 
 &lt;img src="image/result_write_sheet_append.png" width="500", align="right"&gt; 
+
 ]
+
 ---
 
 # Semi-strukturierte Daten &lt;font style="font-size: 16px"&gt;mit &lt;a href="https://github.com/r-lib/xml2"&gt;&lt;mono&gt;xml2&lt;/mono&gt;&lt;/a&gt; und &lt;a href="https://github.com/hadley/rvest"&gt;&lt;mono&gt;rvest&lt;/mono&gt;&lt;/a&gt;&lt;/font&gt; 
@@ -1094,18 +1097,17 @@ my_sheet %&gt;% sheet_append(new_row)
 &lt;ul&gt;
   &lt;li class="m1"&gt;&lt;span&gt;Webseiten bestehen normalerweise aus &lt;high&gt;HTML&lt;/high&gt; und/oder &lt;high&gt;XML&lt;/high&gt;code.&lt;/span&gt;&lt;/li&gt;
   &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;HTML&lt;/high&gt; code besteht aus vorgegebenen &lt;high&gt;tags&lt;/high&gt;, die beschreiben wie eine Seite dargestellt wird.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m3"&gt;&lt;span&gt;&lt;high&gt;XML&lt;/high&gt; code ist weniger vorhersehbar und kann vom Anweder frei definiert werden.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;&lt;high&gt;XML&lt;/high&gt; code ist weniger vorhersehbar. Google Developer Tools in Chrome helfen &lt;high&gt;XML&lt;/high&gt; code tags zu identifizieren (CTRL+[Shift|Option]+C).&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;br&gt;
+
 &lt;p align="center"&gt;
-  &lt;img src="https://github.com/rstudio/hex-stickers/blob/master/PNG/rvest.png" height=200&gt;
+  &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rvest.png" height=200&gt;
 &lt;/p&gt;
 
 ]
 
 .pull-right45[
-
 
 
 ```markdown
@@ -1120,8 +1122,66 @@ my_sheet %&gt;% sheet_append(new_row)
 &lt;/body&gt;
 &lt;/html&gt;
 ```
+]
 
-&lt;img src="image/result_write_sheet_append.png" width="500", align="right"&gt; 
+---
+
+# Semi-strukturierte Daten &lt;font style="font-size: 16px"&gt;mit &lt;a href="https://github.com/r-lib/xml2"&gt;&lt;mono&gt;xml2&lt;/mono&gt;&lt;/a&gt; und &lt;a href="https://github.com/hadley/rvest"&gt;&lt;mono&gt;rvest&lt;/mono&gt;&lt;/a&gt;&lt;/font&gt; 
+
+.pull-left45[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Webseiten bestehen normalerweise aus &lt;high&gt;HTML&lt;/high&gt; und/oder &lt;high&gt;XML&lt;/high&gt;code.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;HTML&lt;/high&gt; code besteht aus vorgegebenen &lt;high&gt;tags&lt;/high&gt;, die beschreiben wie eine Seite dargestellt wird.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;&lt;high&gt;XML&lt;/high&gt; code ist weniger vorhersehbar. Google Developer Tools in Chrome helfen &lt;high&gt;XML&lt;/high&gt; code tags zu identifizieren (CTRL+[Shift|Option]+C).&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p align="center"&gt;
+  &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rvest.png" height=200&gt;
+&lt;/p&gt;
+
+]
+
+.pull-right45[
+
+
+
+```markdown
+&lt;?xml version="1.0"?&gt;
+&lt;note&gt;
+ &lt;to&gt;Keith&lt;/to&gt;
+ &lt;from&gt;Steve&lt;/from&gt;
+ &lt;heading&gt;Kudos&lt;/heading&gt;
+ &lt;body&gt;Awesome work, dude!&lt;/body&gt;
+&lt;/note&gt;
+```
+
+]
+
+---
+
+# Semi-strukturierte Daten &lt;font style="font-size: 16px"&gt;mit &lt;a href="https://github.com/r-lib/xml2"&gt;&lt;mono&gt;xml2&lt;/mono&gt;&lt;/a&gt; und &lt;a href="https://github.com/hadley/rvest"&gt;&lt;mono&gt;rvest&lt;/mono&gt;&lt;/a&gt;&lt;/font&gt; 
+
+.pull-left45[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Webseiten bestehen normalerweise aus &lt;high&gt;HTML&lt;/high&gt; und/oder &lt;high&gt;XML&lt;/high&gt;code.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;HTML&lt;/high&gt; code besteht aus vorgegebenen &lt;high&gt;tags&lt;/high&gt;, die beschreiben wie eine Seite dargestellt wird.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;&lt;high&gt;XML&lt;/high&gt; code ist weniger vorhersehbar. Google Developer Tools in Chrome helfen &lt;high&gt;XML&lt;/high&gt; code tags zu identifizieren (CTRL+[Shift|Option]+C).&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p align="center"&gt;
+  &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rvest.png" height=200&gt;
+&lt;/p&gt;
+]
+
+.pull-right45[
+
+&lt;p align="center"&gt;
+  &lt;img src="image/xml_inspect.png" width=500&gt;
+&lt;/p&gt;
+
 ]
 ---
 
@@ -1132,8 +1192,46 @@ my_sheet %&gt;% sheet_append(new_row)
 
 ```r
 # Tabelle laden von Wikipedia (mit xml2 und rvest)
+read_html("https://en.wikipedia.org/wiki/R_(programming_language)")
+```
+
+```
+## {html_document}
+## &lt;html class="client-nojs" lang="en" dir="ltr"&gt;
+## [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;\n&lt;meta charset="UTF-8"&gt;\n&lt;title&gt;R (programming language) - Wikipedia&lt;/title&gt;\n&lt;script&gt;document.documentElement.className="client-js";RLCO ...
+## [2] &lt;body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-R_programming_language rootpage-R_programming_language skin-vector action-view skin-vector-legacy"&gt;\n&lt;div id="mw-page-base" ...
+```
+
+---
+
+# Semi-strukturierte Daten &lt;font style="font-size: 16px"&gt;mit &lt;a href="https://github.com/r-lib/xml2"&gt;&lt;mono&gt;xml2&lt;/mono&gt;&lt;/a&gt; und &lt;a href="https://github.com/hadley/rvest"&gt;&lt;mono&gt;rvest&lt;/mono&gt;&lt;/a&gt;&lt;/font&gt; 
+
+
+
+
+```r
+# Tabelle laden von Wikipedia (mit xml2 und rvest)
 read_html("https://en.wikipedia.org/wiki/R_(programming_language)") %&gt;%
-  html_node(xpath = '//*[@id="mw-content-text"]/div/table[2]') %&gt;%
+  html_element(xpath = '//*[@id="mw-content-text"]/div/table[2]')
+```
+
+```
+## {html_node}
+## &lt;table class="wikitable"&gt;
+## [1] &lt;tbody&gt;\n&lt;tr&gt;\n&lt;th&gt;Release\n&lt;/th&gt;\n&lt;th&gt;Date\n&lt;/th&gt;\n&lt;th&gt;Description\n&lt;/th&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;th&gt;0.16\n&lt;/th&gt;\n&lt;td&gt;\n&lt;/td&gt;\n&lt;td&gt;This is the last &lt;a href="/wiki/Alpha_test" class="mw-redirect" title="Alpha test"&gt;alpha&lt;/ ...
+```
+
+---
+
+# Semi-strukturierte Daten &lt;font style="font-size: 16px"&gt;mit &lt;a href="https://github.com/r-lib/xml2"&gt;&lt;mono&gt;xml2&lt;/mono&gt;&lt;/a&gt; und &lt;a href="https://github.com/hadley/rvest"&gt;&lt;mono&gt;rvest&lt;/mono&gt;&lt;/a&gt;&lt;/font&gt; 
+
+
+
+
+```r
+# Tabelle laden von Wikipedia (mit xml2 und rvest)
+read_html("https://en.wikipedia.org/wiki/R_(programming_language)") %&gt;%
+  html_element(xpath = '//*[@id="mw-content-text"]/div/table[2]') %&gt;%
   html_table() %&gt;% as_tibble()
 ```
 
@@ -1155,8 +1253,7 @@ read_html("https://en.wikipedia.org/wiki/R_(programming_language)") %&gt;%
 ```
 
 ---
-
-# Other data &lt;font style="font-size: 16px"&gt;siehe &lt;a href="https://cran.r-project.org/web/packages/rio/vignettes/rio.html"&gt;rio&lt;/a&gt;&lt;/font&gt;
+# Andere Datentypen data &lt;font style="font-size: 16px"&gt;siehe auch&lt;a href="https://cran.r-project.org/web/packages/rio/vignettes/rio.html"&gt;rio&lt;/a&gt;&lt;/font&gt;
 
 .pull-left45[
 ### `readr` &lt;img src="image/readr.png" width="50", align="right"&gt; 

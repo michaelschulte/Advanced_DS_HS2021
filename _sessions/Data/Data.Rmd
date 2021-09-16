@@ -708,7 +708,7 @@ options(tibble.width = 40, tibble.max_extra_cols = 0, tibble.print_max = 3,
 ```
 
 ```{r}
-# Extrahiere Tabelle Customers
+# Extrahiere Tabelle Baselers
 basel <- tbl(con, "basel")
 basel
 
@@ -739,10 +739,10 @@ options(tibble.width = 40, tibble.max_extra_cols = 0, tibble.print_max = 3, max.
 ```
 
 ```{r, warning=F, fig.height = 4}
-# Extrahiere Tabelle Customers
+# Extrahiere Tabelle Baselers
 basel <- tbl(con, "basel")
 
-# Extrahiere CompanyNamer Variable
+# Filtere Gewicht
 basel %>% 
   filter(gewicht > 0)
 ```
@@ -770,10 +770,10 @@ options(tibble.width = 40, tibble.max_extra_cols = 0, tibble.print_max = 3, max.
 ```
 
 ```{r, warning=F, fig.height = 4}
-# Extrahiere Tabelle Customers
+# Extrahiere Tabelle Baselers
 basel <- tbl(con, "basel")
 
-# Extrahiere CompanyNamer Variable
+# Filtere Gewicht und Plotte
 basel %>% 
   filter(gewicht > 0) %>%
   ggplot(aes(alter_jahre, gewicht)) +
@@ -855,6 +855,7 @@ gapminder
 ```
 ]
 ---
+
 # Google sheets <font style="font-size: 16px">mit <a href="https://googlesheets4.tidyverse.org/index.html"><mono>googlesheets4</mono></a> und <a href="https://googledrive.tidyverse.org/index.html"><mono>googledrive</mono></a></font> 
 
 .pull-left45[
@@ -890,9 +891,10 @@ my_sheet <- gs4_create("baselers",
 <br><br>
 <img src="image/result_write_sheet.png" width="500", align="right"> 
 ]
+
 ---
 
-# Google sheets <font style="font-size: 16px">mit <a href="https://googlesheets4.tidyverse.org/index.html"><mono>googlesheets4</mono></a> und <a href="https://googledrive.tidyverse.org/index.html"><mono>googledrive</mono></a></font>  
+# Google sheets <font style="font-size: 16px">mit <a href="https://googlesheets4.tidyverse.org/index.html"><mono>googlesheets4</mono></a> und <a href="https://googledrive.tidyverse.org/index.html"><mono>googledrive</mono></a></font> 
 
 .pull-left45[
 
@@ -911,7 +913,6 @@ my_sheet <- gs4_create("baselers",
 
 .pull-right45[
 
-
 ```{r}
 new_row = tibble(id = 7, sex = 'male',
                  age = 44, height = 180, 
@@ -923,7 +924,9 @@ my_sheet %>% sheet_append(new_row)
 ```
 
 <img src="image/result_write_sheet_append.png" width="500", align="right"> 
+
 ]
+
 ---
 
 # Semi-strukturierte Daten <font style="font-size: 16px">mit <a href="https://github.com/r-lib/xml2"><mono>xml2</mono></a> und <a href="https://github.com/hadley/rvest"><mono>rvest</mono></a></font> 
@@ -933,18 +936,17 @@ my_sheet %>% sheet_append(new_row)
 <ul>
   <li class="m1"><span>Webseiten bestehen normalerweise aus <high>HTML</high> und/oder <high>XML</high>code.</span></li>
   <li class="m2"><span><high>HTML</high> code besteht aus vorgegebenen <high>tags</high>, die beschreiben wie eine Seite dargestellt wird.</span></li>
-  <li class="m3"><span><high>XML</high> code ist weniger vorhersehbar und kann vom Anweder frei definiert werden.</span></li>
+  <li class="m3"><span><high>XML</high> code ist weniger vorhersehbar. Google Developer Tools in Chrome helfen <high>XML</high> code tags zu identifizieren (CTRL+[Shift|Option]+C).</span></li>
 </ul>
 
-<br>
+
 <p align="center">
-  <img src="https://github.com/rstudio/hex-stickers/blob/master/PNG/rvest.png" height=200>
+  <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rvest.png" height=200>
 </p>
 
 ]
 
 .pull-right45[
-
 
 ```{markdown}
 <!DOCTYPE html>
@@ -958,8 +960,65 @@ my_sheet %>% sheet_append(new_row)
 </body>
 </html>
 ```
+]
 
-<img src="image/result_write_sheet_append.png" width="500", align="right"> 
+---
+
+# Semi-strukturierte Daten <font style="font-size: 16px">mit <a href="https://github.com/r-lib/xml2"><mono>xml2</mono></a> und <a href="https://github.com/hadley/rvest"><mono>rvest</mono></a></font> 
+
+.pull-left45[
+
+<ul>
+  <li class="m1"><span>Webseiten bestehen normalerweise aus <high>HTML</high> und/oder <high>XML</high>code.</span></li>
+  <li class="m2"><span><high>HTML</high> code besteht aus vorgegebenen <high>tags</high>, die beschreiben wie eine Seite dargestellt wird.</span></li>
+  <li class="m3"><span><high>XML</high> code ist weniger vorhersehbar. Google Developer Tools in Chrome helfen <high>XML</high> code tags zu identifizieren (CTRL+[Shift|Option]+C).</span></li>
+</ul>
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rvest.png" height=200>
+</p>
+
+]
+
+.pull-right45[
+
+
+```{markdown}
+<?xml version="1.0"?>
+<note>
+ <to>Keith</to>
+ <from>Steve</from>
+ <heading>Kudos</heading>
+ <body>Awesome work, dude!</body>
+</note>
+```
+
+]
+
+---
+
+# Semi-strukturierte Daten <font style="font-size: 16px">mit <a href="https://github.com/r-lib/xml2"><mono>xml2</mono></a> und <a href="https://github.com/hadley/rvest"><mono>rvest</mono></a></font> 
+
+.pull-left45[
+
+<ul>
+  <li class="m1"><span>Webseiten bestehen normalerweise aus <high>HTML</high> und/oder <high>XML</high>code.</span></li>
+  <li class="m2"><span><high>HTML</high> code besteht aus vorgegebenen <high>tags</high>, die beschreiben wie eine Seite dargestellt wird.</span></li>
+  <li class="m3"><span><high>XML</high> code ist weniger vorhersehbar. Google Developer Tools in Chrome helfen <high>XML</high> code tags zu identifizieren (CTRL+[Shift|Option]+C).</span></li>
+</ul>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rvest.png" height=200>
+</p>
+]
+
+.pull-right45[
+
+<p align="center">
+  <img src="image/xml_inspect.png" width=500>
+</p>
+
 ]
 ---
 
@@ -972,14 +1031,42 @@ options(max.print=100, width=220,tibble.width = 90,tibble.print_min = 10)
 
 ```{r, message=F}
 # Tabelle laden von Wikipedia (mit xml2 und rvest)
-read_html("https://en.wikipedia.org/wiki/R_(programming_language)") %>%
-  html_node(xpath = '//*[@id="mw-content-text"]/div/table[2]') %>%
-  html_table() %>% as_tibble()
+read_html("https://en.wikipedia.org/wiki/R_(programming_language)")
 ```
 
 ---
 
-# Other data <font style="font-size: 16px">siehe <a href="https://cran.r-project.org/web/packages/rio/vignettes/rio.html">rio</a></font>
+# Semi-strukturierte Daten <font style="font-size: 16px">mit <a href="https://github.com/r-lib/xml2"><mono>xml2</mono></a> und <a href="https://github.com/hadley/rvest"><mono>rvest</mono></a></font> 
+
+```{r, echo = F, message=F}
+library(xml2) ; library(rvest) ; library(tibble)
+options(max.print=100, width=220,tibble.width = 90,tibble.print_min = 10)
+```
+
+```{r, message=F}
+# Tabelle laden von Wikipedia (mit xml2 und rvest)
+read_html("https://en.wikipedia.org/wiki/R_(programming_language)") %>%
+  html_element(xpath = '//*[@id="mw-content-text"]/div/table[2]')
+```
+
+---
+
+# Semi-strukturierte Daten <font style="font-size: 16px">mit <a href="https://github.com/r-lib/xml2"><mono>xml2</mono></a> und <a href="https://github.com/hadley/rvest"><mono>rvest</mono></a></font> 
+
+```{r, echo = F, message=F}
+library(xml2) ; library(rvest) ; library(tibble)
+options(max.print=100, width=220,tibble.width = 90,tibble.print_min = 10)
+```
+
+```{r, message=F}
+# Tabelle laden von Wikipedia (mit xml2 und rvest)
+read_html("https://en.wikipedia.org/wiki/R_(programming_language)") %>%
+  html_element(xpath = '//*[@id="mw-content-text"]/div/table[2]') %>%
+  html_table() %>% as_tibble()
+```
+
+---
+# Andere Datentypen <font style="font-size: 16px">siehe auch<a href="https://cran.r-project.org/web/packages/rio/vignettes/rio.html">rio</a></font>
 
 .pull-left45[
 ### `readr` <img src="image/readr.png" width="50", align="right"> 
