@@ -1,43 +1,18 @@
 ---
-title: "Nächste Schritte"
-author: "
-  Datascience mit R lernen<br>
-  <a href='https://michaelschulte.github.io/RBootcamp_FS2021/'>
-    R Bootcamp
-  </a>"
-date: "FS 2021"
+title: "Next Steps"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
-    lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
       ratio: '16:9'
+    pandoc_args: '../_header.yaml'
+    includes:
+      before_body: '../_before.html'
 ---
 
-layout: true
-
-<div class="my-footer">
-  <span style="text-align:center">
-    <span> 
-      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
-    </span>
-    <a href="https://therbootcamp.github.io/">
-      <span style="padding-left:82px"> 
-        <font color="#7E7E7E">
-          www.therbootcamp.com
-        </font>
-      </span>
-    </a>
-    <a href="https://therbootcamp.github.io/">
-      <font color="#7E7E7E">
-       Datascience mit R | FS 2021
-      </font>
-    </a>
-    </span>
-  </div> 
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -65,7 +40,7 @@ Anonymes [Feedback](https://forms.gle/38LagXxyH2cMHynt8)
 ---
 class: center, middle
 
-# Hallo Tidyverse Experten!
+# Hallo Advanced R-Users!
 
 
 ---

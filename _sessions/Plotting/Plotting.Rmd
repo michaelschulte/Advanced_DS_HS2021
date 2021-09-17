@@ -21,10 +21,10 @@ options(htmltools.dir.version = FALSE)
 options(width=110)
 options(digits = 4)
 require(tidyverse)
-baselers <- readr::read_csv("1_Data/basel.csv")
-library(tidyverse)
 library(ggthemes)
-basel = read_csv('1_Data/basel.csv')
+baselers <- readr::read_csv("1_Data/basel.csv")
+source("../baselink.R")
+
 ```
 ---
 <p align="center">
@@ -1861,8 +1861,7 @@ ggsave(filename = "mein_plot",
 
 class: middle, center
 
-<h1><a href="https://michaelschulte.github.io/RBootcamp_FS2021//_sessions/Plotting/Plotting_practical.html">Practical</a></h1>
-
+<h1><a href="`r noquote(baselink)`_sessions/Plotting/Plotting_practical.html">Practical</a></h1>
 
 
 

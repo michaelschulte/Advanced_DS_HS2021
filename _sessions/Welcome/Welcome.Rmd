@@ -19,6 +19,7 @@ options(width = 110)
 options(digits = 4)
 
 knitr::opts_chunk$set(fig.align = 'center')
+source("../baselink.R")
 ```
 ---
 # Agenda und Material
@@ -370,5 +371,4 @@ Der Kurs besteht aus <high>zwei Teilen</high>, einer <high>Wiederholung</high> v
 
 class: middle, center
 
-<h1><a href="https://michaelschulte.github.io/Advanced_DS_HS2021/index.html">Agenda</a></h1>
-
+<h1><a href="`r noquote(baselink)`index.html">Agenda</a></h1>

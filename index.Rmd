@@ -13,33 +13,33 @@ output:
 
 # Der Plan
 
-## Teil 1 Wiederholung + Vorarbeit 
-
-|Datum|Thema|Input|Practicals|
+## Teil 1 Grundlagen + Projekt Vorarbeit
+|Datum <br><img width=10/>|Thema <br><img width=50/>|Input <br><img width=50/>|Practicals <br><img width=20/>|
 |:--:|:-|:--:|:--:|
 |01.10.| Willkommen! | [slides](_sessions/Welcome/Welcome.html) | | 
-|      | Wiederholung Wrangling | [slides](_sessions/Wrangling/Wrangling.html), [data sets](https://michaelschulte.github.io/Advanced_DS_HS2021/1_Data/ADS_HS2021_data.zip) | [practical](_sessions/Wrangling/Wrangling_practical.html), [solutions](_sessions/Wrangling/Wrangling_practical_solutions.html) |
-|      | Wiederholung Plotting | [slides](_sessions/Plotting/Plotting.html) | [practical](_sessions/Plotting/Plotting_practical.html), [solutions](_sessions/Plotting/Plotting_practical_solutions.html)|
+|| Komplexe Daten | [slides](_sessions/Data/Data.html)|[practical](_sessions/Data/Data_practical.html)|  
+|| Wrangling | [slides](_sessions/Wrangling/Wrangling.html) | [practical](_sessions/Wrangling/Wrangling_practical.html)|
 |15.10.| Recap | | | 
-|| Import komplexer Daten | [slides](_sessions/DataImportAdv/DataImportAdv.html)|[practical](_sessions/DataImportAdv/DataImportAdv_practical.html), [solutions](_sessions/DataImportAdv/DataImportAdv_practical_solutions.html)|  
-|| Web Scraping | [slides](_sessions/Scraping/Scraping.html) | [practical](_sessions/Scraping/Scraping_practical.html), [solutions](_sessions/Scraping/Scraping_practicaI_solutions.html)| 
-||Projekt Vorstellung|[slides](_sessions/ProjectIntro/ProjectIntro.html)|||
+|      | Plotting | [slides](_sessions/Plotting/Plotting.html) | [practical](_sessions/Plotting/Plotting_practical.html)|
+||Vorstellung Projekt |<!--[slides](_sessions/ProjectIntro/ProjectIntro.html)-->|||
 |22.10.| Recap | | | 
-|| Sprachverarbeitung | [slides](_sessions/Language/LanguageI.html) | [practical](_sessions/Language/LanguageI_practical.html), [solutions](_sessions/PlottingII/PlottingII_practical_solutions.html)|
-|| Reporting | [slides](_sessions/Reporting/Reporting.html)| [practical](_sessions/Reporting/Reporting_practical.html), [solutions](_sessions/Reporting/Reporting_practical_solutions.html)||
-||Projekt Pitches|[slides](_sessions/ProjectIntro/ProjectPitches.html)|||
+|| Lineare Modelle I            | [slides](_sessions/LinearModelsI/LinearModelsI.html)|[practical](_sessions/LinearModelsI/LinearModelsI_practical.html)| [solutions](_sessions/StatistikI/StatistikI_practical_solutions.html)|
+|| Lineare Modelle II |[slides](_sessions/LinearModelsII/LinearModelsII.html)|[practical](_sessions/LinearModelsII/LinearModelsII_practical.html)| [solutions](_sessions/StatistikII/StatistikII_practical_solutions.html)|
+||Projekt Pithes||||
 
 ## Teil 2 Projektarbeit
 
-|Datum|Thema|Input|Practicals|
+|Datum <br><img width=10/>|Thema <br><img width=50/>|Input <br><img width=50/>|Practicals <br><img width=20/>|
 |:--:|:-|:--:|:--:|
 |29.10.| Recap | | | 
-|| Statistik I |[slides](_sessions/StatistikI/StatistikI.html)|[practical](_sessions/StatistikI/StatistikI_practical.html)| [solutions](_sessions/StatistikI/StatistikI_practical_solutions.html)|
-|| Statistik II |[slides](_sessions/StatistikII/StatistikII.html)|[practical](_sessions/StatistikII/StatistikII_practical.html)| [solutions](_sessions/StatistikII/StatistikII_practical_solutions.html)|
+|| Reporting I | [slides](_sessions/ReportingI/ReportingI.html)| [practical](_sessions/ReportingI/ReportingI_practical.html)||
+|| Reporting II | [slides](_sessions/ReportingII/ReportingII.html)| [practical](_sessions/ReportingII/ReportingII_practical.html)||
 ||Projekt Arbeit||||
 |05.11.| Recap |||
+|| Reporting III | [slides](_sessions/ReportingIII/ReportingIII.html)| [practical](_sessions/ReportingIII/ReportingIII_practical.html)||
+|| Reporting Slides | [slides](_sessions/Reporting_Slides/Reporting_Slides.html)| [practical](_sessions/Reporting_Slides/Reporting_Slides_practical.html)||
 ||Projekt Arbeit||||
-|26.11.| Projektpräsentationen || [feedback](https://forms.gle/38LagXxyH2cMHynt8), [evaluation]()| 
+|26.11.| Projektpräsentationen || <!--[feedback](https://forms.gle/38LagXxyH2cMHynt8)-->| 
 ||Next Steps|[Next steps](_sessions/NextSteps/NextSteps.html) |  | | 
 
 
@@ -49,4 +49,8 @@ Upload bitte in der Form: GRUPPE.zip spätestens bis Donnerstag 12.00 Uhr Mittag
 
 Practicals immer als gesamtes R-Verzeichnis inkl .RProject File, Code, Plots usw hochladen. Code soll problemlos laufen!
 
-[Practical Upload](https://www.dropbox.com/request/Xy2d1iene4LATNdSmVzJ)
+<h2>[Practical Upload](https://www.dropbox.com/request/Xy2d1iene4LATNdSmVzJ)</h2>
+
+# Downloads
+
+<h2>[Project + Datasets](https://michaelschulte.github.io/Advanced_DS_HS2021/1_Data/ADS_HS2021.zip)</h2>
