@@ -37,7 +37,7 @@ Klicke auf <high>"Start Advanced Datascience"</high> auf Ilias!
 .pull-right45[
 
 <ul>
-<iframe src="https://michaelschulte.github.io/Advanced_DS_HS2021/" width="500" height="500"></iframe>
+<iframe src="https://ads-hs2021.netlify.app/" width="500" height="500"></iframe>
 </ul>  
 
 ]
@@ -189,9 +189,9 @@ Der Kurs besteht aus <high>zwei Teilen</high>, einer <high>Wiederholung</high> v
 .pull-right5[
 <br>
 
-  <iframe src="https://michaelschulte.github.io/Advanced_DS_HS2021/_sessions/Wrangling/Wrangling_practical.html" height="480px" width = "500px"></iframe>
+  <iframe src="https://ads-hs2021.netlify.app/_sessions/Wrangling/Wrangling_practical.html" height="480px" width = "500px"></iframe>
 
-  Beispiel:<a href="https://michaelschulte.github.io/Advanced_DS_HS2021/_sessions/Wrangling/Wrangling_practical.html"> Wrangling </a>
+  Beispiel:<a href="https://ads-hs2021.netlify.app/_sessions/Wrangling/Wrangling_practical.html"> Wrangling </a>
 
 ]
 

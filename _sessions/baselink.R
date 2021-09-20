@@ -1,1 +1,1 @@
-baselink <- 'https://michaelschulte.github.io/Advanced_DS_HS2021/'
+baselink <- 'https://ads-hs2021.netlify.app/'

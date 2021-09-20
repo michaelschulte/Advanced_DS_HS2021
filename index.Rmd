@@ -55,4 +55,4 @@ Practicals immer als gesamtes R-Verzeichnis inkl .RProject File, Code, Plots usw
 
 <h2>[Installation](installation.html)</h2>
 
-<h2>[Project + Datasets](https://michaelschulte.github.io/Advanced_DS_HS2021/1_Data/ADS_HS2021.zip)</h2>
+<h2>[Project + Datasets](https://ads-hs2021.netlify.app/ADS_HS2021.zip)</h2>

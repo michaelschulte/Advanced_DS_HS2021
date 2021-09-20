@@ -1,1 +1,1 @@
-link <- "https://michaelschulte.github.io/Advanced_DS_HS2021/"
+link <- "https://ads-hs2021.netlify.app/"
