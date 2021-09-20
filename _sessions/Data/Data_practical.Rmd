@@ -26,7 +26,7 @@ knitr::opts_chunk$set(comment = NA,
                       fig.height = 6,
                       fig.align = 'center',
                       echo = FALSE, 
-                      eval = TRUE, 
+                      eval = FALSE, 
                       warning = FALSE)
 
 options(digits = 3)
@@ -554,7 +554,7 @@ sum(sleep$alchohol > 10, na.rm = TRUE)
 
 2. Indentifiziere den Index der Person in der Variable `alchohol` mit `which()`. 
 
-```{r, eval = FALSE, echo = TRUE}
+```{r}
 # Index von alchohol > 10
 which(sleep$alchohol > 10)
 ```

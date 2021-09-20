@@ -25,7 +25,7 @@ output:
 |22.10.| Recap | | | 
 || Lineare Modelle I            | [slides](_sessions/LinearModelsI/LinearModelsI.html)|[practical](_sessions/LinearModelsI/LinearModelsI_practical.html)| [solutions](_sessions/StatistikI/StatistikI_practical_solutions.html)|
 || Lineare Modelle II |[slides](_sessions/LinearModelsII/LinearModelsII.html)|[practical](_sessions/LinearModelsII/LinearModelsII_practical.html)| [solutions](_sessions/StatistikII/StatistikII_practical_solutions.html)|
-||Projekt Pithes||||
+||Projekt Pitches||||
 
 ## Teil 2 Projektarbeit
 
@@ -52,5 +52,7 @@ Practicals immer als gesamtes R-Verzeichnis inkl .RProject File, Code, Plots usw
 <h2>[Practical Upload](https://www.dropbox.com/request/Xy2d1iene4LATNdSmVzJ)</h2>
 
 # Downloads
+
+<h2>[Installation](installation.html)</h2>
 
 <h2>[Project + Datasets](https://michaelschulte.github.io/Advanced_DS_HS2021/1_Data/ADS_HS2021.zip)</h2>

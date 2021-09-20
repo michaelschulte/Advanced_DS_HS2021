@@ -18,7 +18,14 @@ Bootcamp_package_installation <- function() {
     "tidyverse",
     "knitr",
     "rmarkdown",
-    "DT"
+    "DT",
+    "rvest",
+    "xml2",
+    "kableExtra",
+    "lubridate",
+    "sjPlot",
+    "readxl"
+    
   )
   
   # Optional packages
@@ -31,9 +38,9 @@ Bootcamp_package_installation <- function() {
     "viridis",
     "ggthemes",
     "gridExtra"
-    )
+  )
   
-  message("Welcome to the R Bootcamp!")
+  message("Welcome to Advanced DS!")
   message("We will now install some packages - this could take a while ...")
   
   critical_not_installed <- c()
@@ -114,9 +121,8 @@ Bootcamp_package_installation <- function() {
   
   
   message("--------------------------------")
-  message("See you in the R Bootcamp")
-  message("therbootcamp@gmail.com")
-  message("www.therbootcamp.com")
+  message("See you in Advanced DS!")
+  message("michael.schulte@unibe.ch")
   message("--------------------------------")
   
 }

@@ -25,8 +25,8 @@ knitr::opts_chunk$set(comment = NA,
                       fig.width = 6,
                       fig.height = 6,
                       fig.align = 'center',
-                      echo = TRUE,
-                      eval = TRUE,
+                      echo = FALSE,
+                      eval = FALSE,
                       warning = FALSE)
 
 options(digits = 3)
@@ -79,7 +79,12 @@ library(tidyverse)
 
 5. Verwende die `read_csv()` Funktion um `wein.csv` einzulesen.
 
-```{r, echo = T, eval = T, message = F}
+```{r, echo = F, eval = T, message = F}
+# Lese Daten ein
+wein <- read_csv(file = "1_Data/wein.csv")
+```
+
+```{r, message = F}
 # Lese Daten ein
 wein <- read_csv(file = "1_Data/wein.csv")
 ```
