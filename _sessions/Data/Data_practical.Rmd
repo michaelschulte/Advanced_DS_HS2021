@@ -3,8 +3,8 @@ title: "Daten"
 author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
-      <font style='font-style:normal'>Datascience mit R lernen</font><br>
-      <a href='https://michaelschulte.github.io/RBootcamp_FS2021/'>
+      <font style='font-style:normal'>Advanced Datascience mit R</font><br>
+      <a href='https://ads-hs2021.netlify.app'>
         <i class='fas fa-home' style='font-size:.9em;'></i>
       </a>
       
@@ -504,10 +504,10 @@ write_csv(x = titanic,
 #### SPSS 
 
 ```{r, out.width = "8%", fig.align = 'left', eval = TRUE, echo = FALSE}
-knitr::include_graphics("http://www.sqlearn.gr/wp-content/uploads/2010/12/2000px-SPSS_logo.jpg")
+knitr::include_graphics("image/SPSS.jpg")
 ```
 
-In diesem Unterabschnitt liest du den `sleep` Datensatz mit Informationen über das Schlafverhalten der Mitarbeiter der Universität Melbourne enthält aus einem SPSS format ein und speicherst die Daten als `.csv`.
+In diesem Unterabschnitt liest du den `sleep` Datensatz mit Informationen über das Schlafverhalten der Mitarbeiter der Universität Melbourne enthält aus einem SPSS Format ein und speicherst die Daten als `.csv`.
 
 1. Verwende die `read_spss()` Funktion, um den Datensatz `sleep.sav` als ein neues Objekt `sleep` einzulesen. 
 

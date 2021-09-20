@@ -270,13 +270,13 @@ patienten %&gt;%
 
 ```
 ## # A tibble: 5 × 5
-##      id alter bedingung monate
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-## 1     1    37         1    444
-## 2     2    65         2    780
-## 3     3    57         2    684
-## 4     4    34         1    408
-## 5     5    45         2    540
+##      id alter bedingung monate dekaden
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+## 1     1    37         1    444     3.7
+## 2     2    65         2    780     6.5
+## 3     3    57         2    684     5.7
+## 4     4    34         1    408     3.4
+## 5     5    45         2    540     4.5
 ```
 
 ]
@@ -455,11 +455,11 @@ patienten %&gt;%
 
 ```
 ## # A tibble: 3 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     1    37         1 placebo   
-## 2     2    65         2 medikament
-## 3     4    34         1 placebo
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    37         1 placebo      123   135
+## 2     2    65         2 medikament   143   140
+## 3     4    34         1 placebo      100   105
 ```
 ]
 
@@ -498,13 +498,13 @@ patienten %&gt;%
 
 ```
 ## # A tibble: 5 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     1    37         1 placebo   
-## 2     2    65         2 medikament
-## 3     3    57         2 medikament
-## 4     4    34         1 placebo   
-## 5     5    45         2 medikament
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    37         1 placebo      123   135
+## 2     2    65         2 medikament   143   140
+## 3     3    57         2 medikament    NA    NA
+## 4     4    34         1 placebo      100   105
+## 5     5    45         2 medikament    NA    NA
 ```
 ]
 
@@ -554,13 +554,13 @@ patienten_ergebnisse
 
 ```
 ## # A tibble: 5 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     1    37         1 placebo   
-## 2     2    65         2 medikament
-## 3     3    57         2 medikament
-## 4     4    34         1 placebo   
-## 5     5    45         2 medikament
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    37         1 placebo      123   135
+## 2     2    65         2 medikament   143   140
+## 3     3    57         2 medikament    NA    NA
+## 4     4    34         1 placebo      100   105
+## 5     5    45         2 medikament    NA    NA
 ```
 
 
@@ -596,13 +596,13 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 5 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     1    37         1 placebo   
-## 2     4    34         1 placebo   
-## 3     2    65         2 medikament
-## 4     3    57         2 medikament
-## 5     5    45         2 medikament
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    37         1 placebo      123   135
+## 2     4    34         1 placebo      100   105
+## 3     2    65         2 medikament   143   140
+## 4     3    57         2 medikament    NA    NA
+## 5     5    45         2 medikament    NA    NA
 ```
 
 ]
@@ -637,13 +637,13 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 5 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     4    34         1 placebo   
-## 2     1    37         1 placebo   
-## 3     5    45         2 medikament
-## 4     3    57         2 medikament
-## 5     2    65         2 medikament
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     4    34         1 placebo      100   105
+## 2     1    37         1 placebo      123   135
+## 3     5    45         2 medikament    NA    NA
+## 4     3    57         2 medikament    NA    NA
+## 5     2    65         2 medikament   143   140
 ```
 
 ]
@@ -683,10 +683,10 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 2 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     5    45         2 medikament
-## 2     2    65         2 medikament
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     5    45         2 medikament    NA    NA
+## 2     2    65         2 medikament   143   140
 ```
 
 
@@ -724,12 +724,12 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 4 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     4    34         1 placebo   
-## 2     1    37         1 placebo   
-## 3     5    45         2 medikament
-## 4     3    57         2 medikament
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     4    34         1 placebo      100   105
+## 2     1    37         1 placebo      123   135
+## 3     5    45         2 medikament    NA    NA
+## 4     3    57         2 medikament    NA    NA
 ```
 
 ]
@@ -761,12 +761,12 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 4 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     1    37         1 placebo   
-## 2     2    65         2 medikament
-## 3     3    57         2 medikament
-## 4     5    45         2 medikament
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    37         1 placebo      123   135
+## 2     2    65         2 medikament   143   140
+## 3     3    57         2 medikament    NA    NA
+## 4     5    45         2 medikament    NA    NA
 ```
 
 ]
@@ -801,11 +801,11 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 3 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     2    65         2 medikament
-## 2     3    57         2 medikament
-## 3     5    45         2 medikament
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     2    65         2 medikament   143   140
+## 2     3    57         2 medikament    NA    NA
+## 3     5    45         2 medikament    NA    NA
 ```
 
 ]
@@ -883,13 +883,13 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 5 × 5
-##   alter bedingung bed_label    t_1
-##   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;
-## 1    37         1 placebo      123
-## 2    65         2 medikament   143
-## 3    57         2 medikament    NA
-## 4    34         1 placebo      100
-## 5    45         2 medikament    NA
+##   alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1    37         1 placebo      123   135
+## 2    65         2 medikament   143   140
+## 3    57         2 medikament    NA    NA
+## 4    34         1 placebo      100   105
+## 5    45         2 medikament    NA    NA
 ```
 
 ]
@@ -928,13 +928,13 @@ patienten_ergebnisse
 
 ```
 ## # A tibble: 5 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     1    37         1 placebo   
-## 2     2    65         2 medikament
-## 3     3    57         2 medikament
-## 4     4    34         1 placebo   
-## 5     5    45         2 medikament
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    37         1 placebo      123   135
+## 2     2    65         2 medikament   143   140
+## 3     3    57         2 medikament    NA    NA
+## 4     4    34         1 placebo      100   105
+## 5     5    45         2 medikament    NA    NA
 ```
 
 
@@ -976,13 +976,13 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 5 × 6
-##   id    alter bedingung bed_label 
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     
-## 1 1     37    1         placebo   
-## 2 2     65    2         medikament
-## 3 3     57    2         medikament
-## 4 4     34    1         placebo   
-## 5 5     45    2         medikament
+##   id    alter bedingung bed_label  t_1   t_2  
+##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;
+## 1 1     37    1         placebo    123   135  
+## 2 2     65    2         medikament 143   140  
+## 3 3     57    2         medikament &lt;NA&gt;  &lt;NA&gt; 
+## 4 4     34    1         placebo    100   105  
+## 5 5     45    2         medikament &lt;NA&gt;  &lt;NA&gt;
 ```
 
 ]
@@ -1023,13 +1023,13 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 5 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     1    37         1 placebo   
-## 2     2    65         2 medikament
-## 3     3    57         2 medikament
-## 4     4    34         1 placebo   
-## 5     5    45         2 medikament
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    37         1 placebo      123   135
+## 2     2    65         2 medikament   143   140
+## 3     3    57         2 medikament   110    NA
+## 4     4    34         1 placebo      100   105
+## 5     5    45         2 medikament   110    NA
 ```
 
 ]
@@ -1070,11 +1070,11 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 3 × 6
-##      id alter bedingung bed_label 
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     
-## 1     1    37         1 placebo   
-## 2     2    65         2 medikament
-## 3     4    34         1 placebo
+##      id alter bedingung bed_label    t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    37         1 placebo      123   135
+## 2     2    65         2 medikament   143   140
+## 3     4    34         1 placebo      100   105
 ```
 
 ]
@@ -1143,10 +1143,10 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 2 × 6
-##      id alter bedingung bed_label
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    
-## 1     1    37         1 placebo  
-## 2     4    34         1 placebo
+##      id alter bedingung bed_label   t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    37         1 placebo     123   135
+## 2     4    34         1 placebo     100   105
 ```
 ]
 
@@ -1181,12 +1181,12 @@ patienten_ergebnisse %&gt;%
 
 ```
 ## # A tibble: 4 × 6
-##      id alter bedingung bed_label
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    
-## 1     1    37         1 placebo  
-## 2     1    37         1 placebo  
-## 3     4    34         1 placebo  
-## 4     4    34         1 placebo
+##      id alter bedingung bed_label zeit  messung
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt;
+## 1     1    37         1 placebo   t_1       123
+## 2     1    37         1 placebo   t_2       135
+## 3     4    34         1 placebo   t_1       100
+## 4     4    34         1 placebo   t_2       105
 ```
 
 ]
@@ -1219,12 +1219,12 @@ patienten_ergebnisse_lang
 
 ```
 ## # A tibble: 4 × 6
-##      id alter bedingung bed_label
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    
-## 1     1    37         1 placebo  
-## 2     1    37         1 placebo  
-## 3     4    34         1 placebo  
-## 4     4    34         1 placebo
+##      id alter bedingung bed_label zeit  messung
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt;
+## 1     1    37         1 placebo   t_1       123
+## 2     1    37         1 placebo   t_2       135
+## 3     4    34         1 placebo   t_1       100
+## 4     4    34         1 placebo   t_2       105
 ```
 
 ]
@@ -1259,10 +1259,10 @@ patienten_ergebnisse_lang %&gt;%
 
 ```
 ## # A tibble: 2 × 6
-##      id alter bedingung bed_label
-##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    
-## 1     1    37         1 placebo  
-## 2     4    34         1 placebo
+##      id alter bedingung bed_label   t_1   t_2
+##   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1     1    37         1 placebo     123   135
+## 2     4    34         1 placebo     100   105
 ```
 
 ]
