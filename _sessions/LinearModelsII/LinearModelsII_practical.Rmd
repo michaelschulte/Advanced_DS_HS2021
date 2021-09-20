@@ -80,11 +80,6 @@ library(tidyverse)
 
 5. Verwende die `read_csv()` Funktion um wiederum `wein.csv` einzulesen.
 
-```{r, echo = T, eval = T, message = F}
-# Lese Daten ein
-wein <- read_csv(file = "1_Data/wein.csv")
-```
-
 6. Führe den Code unten wieder aus, um sicherzustellen, dass alle `character` Variablen als Faktoren vorliegen, was den statistischen Modellen hilft kategoriale Variablen richtig zu interpretieren. 
 
 ```{r, echo = TRUE}
@@ -97,7 +92,7 @@ wein <- wein %>% mutate_if(is.character, factor)
 
 1. In diesem Abschnitt geht es darum den Effekt der `Farbe` (Prädiktor) des Weins, rot oder weiss, auf die `Qualität` des Weines zu prüfen. Verwende hierzu zunächst den Code unten um zwei Vektoren zu erstellen, die jeweils die Qualitätswerte für weisse und rote Weine beinhalten. 
 
-```{r, echo = TRUE}
+```{r}
 # Qualitätsvektoren nach Farbe
 weiss <- wein %>% filter(Farbe == 'weiss') %>% pull(Qualität)
 rot <- wein %>% filter(Farbe == 'rot') %>% pull(Qualität)

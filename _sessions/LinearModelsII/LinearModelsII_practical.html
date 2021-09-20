@@ -209,11 +209,7 @@ pre code {
 <li><p>Speichere das neue Skript unter dem Namen <code>lineare_modelle_II_practical.R</code> im <code>2_Code</code> Ordner.</p></li>
 <li><p>Lade das Paket <code>tidyverse</code>.</p></li>
 <li><p>Verwende die <code>read_csv()</code> Funktion um wiederum <code>wein.csv</code> einzulesen.</p></li>
-</ol>
-<pre class="r"><code># Lese Daten ein
-wein &lt;- read_csv(file = &quot;1_Data/wein.csv&quot;)</code></pre>
-<ol start="6" style="list-style-type: decimal">
-<li>Führe den Code unten wieder aus, um sicherzustellen, dass alle <code>character</code> Variablen als Faktoren vorliegen, was den statistischen Modellen hilft kategoriale Variablen richtig zu interpretieren.</li>
+<li><p>Führe den Code unten wieder aus, um sicherzustellen, dass alle <code>character</code> Variablen als Faktoren vorliegen, was den statistischen Modellen hilft kategoriale Variablen richtig zu interpretieren.</p></li>
 </ol>
 <pre class="r"><code># Konvertiere alle character zu factor
 wein &lt;- wein %&gt;% mutate_if(is.character, factor)</code></pre>
@@ -221,13 +217,8 @@ wein &lt;- wein %&gt;% mutate_if(is.character, factor)</code></pre>
 <div id="b---gruppenvergleiche-t-test-versus-regression" class="section level3">
 <h3>B - Gruppenvergleiche: <i>t</i>-Test versus Regression</h3>
 <ol style="list-style-type: decimal">
-<li>In diesem Abschnitt geht es darum den Effekt der <code>Farbe</code> (Prädiktor) des Weins, rot oder weiss, auf die <code>Qualität</code> des Weines zu prüfen. Verwende hierzu zunächst den Code unten um zwei Vektoren zu erstellen, die jeweils die Qualitätswerte für weisse und rote Weine beinhalten.</li>
-</ol>
-<pre class="r"><code># Qualitätsvektoren nach Farbe
-weiss &lt;- wein %&gt;% filter(Farbe == &#39;weiss&#39;) %&gt;% pull(Qualität)
-rot &lt;- wein %&gt;% filter(Farbe == &#39;rot&#39;) %&gt;% pull(Qualität)</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Verwende nun das <code>t.test()</code> Template unten um die beiden Vektoren mit einem <i>t</i>-Test miteinander zu vergleichen. Du brauchst das Ergebnis nicht zu speichern.</li>
+<li><p>In diesem Abschnitt geht es darum den Effekt der <code>Farbe</code> (Prädiktor) des Weins, rot oder weiss, auf die <code>Qualität</code> des Weines zu prüfen. Verwende hierzu zunächst den Code unten um zwei Vektoren zu erstellen, die jeweils die Qualitätswerte für weisse und rote Weine beinhalten.</p></li>
+<li><p>Verwende nun das <code>t.test()</code> Template unten um die beiden Vektoren mit einem <i>t</i>-Test miteinander zu vergleichen. Du brauchst das Ergebnis nicht zu speichern.</p></li>
 </ol>
 <pre class="r"><code># t-test
 t.test(x = XX, y = XX)</code></pre>

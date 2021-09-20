@@ -24,7 +24,7 @@ output:
 ||Vorstellung Projekt |<!--[slides](_sessions/ProjectIntro/ProjectIntro.html)-->|||
 |22.10.| Recap | | | 
 || Lineare Modelle I            | [slides](_sessions/LinearModelsI/LinearModelsI.html)|[practical](_sessions/LinearModelsI/LinearModelsI_practical.html)| [solutions](_sessions/StatistikI/StatistikI_practical_solutions.html)|
-|| Lineare Modelle II |[slides](_sessions/LinearModelsII/LinearModelsII.html)|[practical](_sessions/LinearModelsII/LinearModelsII_practical.html)| [solutions](_sessions/StatistikII/StatistikII_practical_solutions.html)|
+|| Reporting I | [slides](_sessions/ReportingI/ReportingI.html)| [practical](_sessions/ReportingI/ReportingI_practical.html)||
 ||Projekt Pitches||||
 
 ## Teil 2 Projektarbeit
@@ -32,7 +32,7 @@ output:
 |Datum <br><img width=10/>|Thema <br><img width=50/>|Input <br><img width=50/>|Practicals <br><img width=20/>|
 |:--:|:-|:--:|:--:|
 |29.10.| Recap | | | 
-|| Reporting I | [slides](_sessions/ReportingI/ReportingI.html)| [practical](_sessions/ReportingI/ReportingI_practical.html)||
+|| Lineare Modelle II |[slides](_sessions/LinearModelsII/LinearModelsII.html)|[practical](_sessions/LinearModelsII/LinearModelsII_practical.html)| [solutions](_sessions/StatistikII/StatistikII_practical_solutions.html)|
 || Reporting II | [slides](_sessions/ReportingII/ReportingII.html)| [practical](_sessions/ReportingII/ReportingII_practical.html)||
 ||Projekt Arbeit||||
 |05.11.| Recap |||
