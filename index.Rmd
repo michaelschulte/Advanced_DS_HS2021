@@ -19,11 +19,11 @@ output:
 |01.10.| Willkommen! | [slides](_sessions/Welcome/Welcome.html) | | 
 || Komplexe Daten | [slides](_sessions/Data/Data.html)|[practical](_sessions/Data/Data_practical.html)|  
 || Wrangling | [slides](_sessions/Wrangling/Wrangling.html) | [practical](_sessions/Wrangling/Wrangling_practical.html)|
-|| Literatur || [Provost2013](_materials/papers/Provost2013.pdf)|
+|| Literatur || [Provost 2013](_sessions/_materials/papers/Provost2013.pdf)|
 |15.10.| Recap | | | 
 |      | Plotting | [slides](_sessions/Plotting/Plotting.html) | [practical](_sessions/Plotting/Plotting_practical.html)|
 ||Vorstellung Projekt |<!--[slides](_sessions/ProjectIntro/ProjectIntro.html)-->|||
-|| Literatur || [Varian2016](_materials/papers/Varian2016.pdf)|
+|| Literatur || [Varian 2016](_sessions/_materials/papers/Varian2016.pdf)|
 |22.10.| Recap | | | 
 || Lineare Modelle I            | [slides](_sessions/LinearModelsI/LinearModelsI.html)|[practical](_sessions/LinearModelsI/LinearModelsI_practical.html)| [solutions](_sessions/StatistikI/StatistikI_practical_solutions.html)|
 || Reporting I | [slides](_sessions/ReportingI/ReportingI.html)| [practical](_sessions/ReportingI/ReportingI_practical.html)||
