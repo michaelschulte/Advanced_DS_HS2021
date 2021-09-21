@@ -1,0 +1,152 @@
+---
+title: "Projekt"
+output:
+  xaringan::moon_reader:
+    css: ["default", "baselrbootcamp.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+    pandoc_args: '../_header.yaml'
+    includes:
+      before_body: '../_before.html'
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+options(width = 110)
+options(digits = 4)
+
+knitr::opts_chunk$set(fig.align = 'center')
+source("../baselink.R")
+```
+---
+# Ziel im Detail
+
+.pull-left45[
+
+<ul>
+Daten sind im <high>Marketing</high> eine Ressource, die immer mehr an Wichtigkeit gewinnt. Das Ziel dieses Seminars ist es Fragen aus dem Marketing <high>datenbasiert</high> und <high>analytisch</high> zu beantworten. 
+<br><br>
+Der Kurs besteht aus <high>zwei Teilen</high>, einer <high>Wiederholung</high> von R Grundlagen und die <high>eigenständige</high> Ausarbeitung einer <high>Fragestellung</high>, deren <high>Beantwortung</high> und <high>Präsentation</high>. 
+</ul>
+
+]
+
+
+.pull-right45[
+
+<ul>
+<p align="center"><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/target.png" height="350"></p>
+
+</ul>  
+
+]
+---
+.pull-left4[
+
+# Idee
+
+Daten sind ein <high>integraler Bestandteil</high> täglicher Entscheidungen in der Wirtschaft, Politik, Medizin und Wissenschaft.
+
+Aber Daten alleine sind nur wenig hilfreich - es benötigt zuerst eine <high>Frage</high> und dann die <high>passenden Daten</high>, um diese Frage zu beantworten.
+
+Wir werden gemeinsam eine <high>Fragestellung</high> für euer Projekt entwickeln, die <high>passenden Daten</high> suchen (und hoffentlich finden), diese Daten dann <high>aufbereiten</high> und <high>auswerten</high>.
+
+]
+
+.pull-right6[
+<br>
+<p align = "center">
+<img src="https://i.pinimg.com/originals/72/10/b8/7210b83c0fb49a723a447d62e0875b5e.jpg" height="540"><br>
+<font style="font-size:10px">from <a href="http://sudeep.co/">http://sudeep.co/</a></font>
+</p>
+]
+
+---
+
+# Prozess
+
+.pull-left45[
+
+<ul>
+
+  <li class="m1"><span><high>Erarbeitung einer DS Fragestellung</high></span></li>
+  <ul class="level">
+    <li><span>Literatur</span></li>
+    <li><span>Social Media</span></li>
+    <li><span>persönlicher Bezug</span></li>
+  </ul>
+  <li class="m2"><span><high>Datenquellen prüfen</high>
+  <ul class="level">
+    <li><span><a href = "https://kaggle.com">https://kaggle.com</a></span></li>
+    <li><span><a href = "https://opendata.swiss/de">https://opendata.swiss/de</a></span></li>
+    <li><span> <a href = "https://osf.io">http://osf.io</a></span></li>
+    <li><span> <a href = "https://ourworldindata.org/coronavirus-source-data">https://ourworldindata.org</a></span></li>
+  </ul>
+    <li class="m3"><span><high>Idee pitchen (22.10.)</high>
+  <ul class="level">
+    <li><span>3 Slides</span></li>
+    <li><span>5 Minuten</span></li>
+  </ul>
+    <li class="m4"><span><high>Umsetzung</high>
+  <ul class="level">
+    <li><span>Wrangling</span></li>
+    <li><span>Analyse</span></li>
+    <li><span>Aufbereitung</span></li>
+  </ul>
+      <li class="m4"><span><high>Präsentation (26.11.)</high>
+  <ul class="level">
+    <li><span>HTML Dokument</span></li>
+    <li><span>einwandfreies Layout</span></li>
+  </ul>
+  
+  
+  </span></li>
+
+</ul>
+
+]
+
+
+.pull-right5[
+
+<p align="center"><img src="image/DS_Process.png" width="800"></p>
+
+]
+---
+
+# Ideen generieren
+
+.pull-left45[
+
+
+
+<ol>
+
+  <li class="m1"><span>Breakout Room</span></li>
+  <li class="m2"><span>30 Minuten</span></li>
+  <li class="m3"><span>möglichst viele Ideen produzieren</span></li>
+  <li class="m4"><span>nach den 30 min <a href = "https://miro.com/app/board/o9J_lvxNKs4=/">hier</a> in Stichworten dokumentieren </span></li>
+
+</ol>
+
+]
+
+.pull-right5[
+<!-- <ul> -->
+<p align="center"><img src="image/DS_Process.png" width="800"></p>
+</ul>
+]
+
+
+---
+class: middle, center
+
+<h1>Fragen?</h1>
+
+---
+class: middle, center
+
+<h1><a href="`r noquote(baselink)`index.html">Agenda</a></h1>

@@ -13,13 +13,13 @@
 
 <title>Daten</title>
 
-<script src="Data_practical_files/header-attrs/header-attrs.js"></script>
-<script src="Data_practical_files/jquery/jquery.min.js"></script>
+<script src="Data_practical_files/header-attrs-2.10/header-attrs.js"></script>
+<script src="Data_practical_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="Data_practical_files/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-<script src="Data_practical_files/bootstrap/js/bootstrap.min.js"></script>
-<script src="Data_practical_files/bootstrap/shim/html5shiv.min.js"></script>
-<script src="Data_practical_files/bootstrap/shim/respond.min.js"></script>
+<link href="Data_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="Data_practical_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="Data_practical_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="Data_practical_files/bootstrap-3.3.5/shim/respond.min.js"></script>
 <style>h1 {font-size: 34px;}
        h1.title {font-size: 38px;}
        h2 {font-size: 30px;}
@@ -29,9 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="Data_practical_files/navigation/tabsets.js"></script>
-<link href="Data_practical_files/highlightjs/default.css" rel="stylesheet" />
-<script src="Data_practical_files/highlightjs/highlight.js"></script>
+<script src="Data_practical_files/navigation-1.1/tabsets.js"></script>
+<link href="Data_practical_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="Data_practical_files/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -420,6 +420,42 @@ table(titanic$XX, titanic$XX)</code></pre>
 <li><p>Verwende <code>write_csv()</code> um den Datensatz <code>sleep</code> als <code>.csv</code> auf in deinen <code>1_Data</code> Ordner zu schreiben.</p></li>
 </ol>
 </div>
+</div>
+<div id="g---webseite-scrapen" class="section level3">
+<h3>G - Webseite scrapen</h3>
+<ol style="list-style-type: decimal">
+<li>Verwende <code>read_html()</code> um den Satz auf dieser Webseite: <a href="https://dataquestio.github.io/web-scraping-pages/simple.html" class="uri">https://dataquestio.github.io/web-scraping-pages/simple.html</a> in das Obekt <code>einfach</code> einzulesen</li>
+</ol>
+<pre class="r"><code>XX &lt;- read_html(XX)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Printe <code>einfach</code> und finde heraus welches Tag für uns interessant ist, um den Satz zu extrahieren.</p></li>
+<li><p>Genau! Wir sind am Tag <code>&lt;p&gt;</code> interessiert - unter Verwendung von <code>html_nodes()</code> und dann <code>html_text()</code> extrahiere den Satz: Here is some simple content for this page.</p></li>
+</ol>
+<pre class="r"><code>XX %&gt;%
+html_nodes(XX) %&gt;%
+html_text()</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Nun wollen wir eine ganze Tabelle extrahieren. Gehe dafür auf die Seite: <a href = "https://ourworldindata.org/famines">https://ourworldindata.org/famines</a>, auf der Daten über Hungersnöte abgebildet sind.</p></li>
+<li><p>Am Ende der Seite (langer scroll!) findest du eine Tabelle, in der Hungersnöte von 1846 - 2011 gelistet sind. Diese Tabelle werdden wir einlesen.</p></li>
+<li><p>Finde zuerst die ID der Tabelle heraus (siehe Trick in Chrome, oder rechte Maustaste und <code>Inspect</code>). Du suchst <code>id = tablepress-XX</code>. Speichere diese ID unter <code>css_selector</code> und den url im Object <code>url</code> ab.</p></li>
+</ol>
+<pre class="r"><code>css_selector &lt;- &quot;XX&quot;
+url &lt;- &quot;XX&quot;</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Lies nun die Webseite mit <code>read_html()</code> ein und schreib das Ergebnis in das Objekt <code>famines</code>.</li>
+</ol>
+<pre class="r"><code>XX &lt;- read_html(XX)</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>Wähle nun mittels <code>html_element()</code> den css selector der Tabelle aus, den du weiter oben gespeichert hast.</li>
+</ol>
+<pre class="r"><code>famines %&gt;% 
+  html_element(XX)</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>Fast fertig! Die Darstellung ist noch nicht sehr leserlich - verwende <code>html_table()</code>, um das html in einen R dataframe umzuwandeln.</li>
+</ol>
+<pre class="r"><code>famines %&gt;% 
+  html_element(XX) %&gt;%
+  html_table()</code></pre>
 </div>
 <div id="x---mit-logicals-rechnen" class="section level3">
 <h3>X - Mit <code>logical</code>s rechnen</h3>

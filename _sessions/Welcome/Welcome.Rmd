@@ -220,7 +220,7 @@ Der Kurs besteht aus <high>zwei Teilen</high>, einer <high>Wiederholung</high> v
     <li><span>Proposal vorstellen.</span></li>
     <li><span>Anregungen einarbeiten.</span></li>
     <li><span>Datenanalyse durchführen, Forschungsfrage beantworten.</span></li>
-    <li><span>Projektpräsentation mir RMarkdown (Slides oder Bericht).</span></li>
+    <li><span>Projektpräsentation mit RMarkdown (HTML Bericht).</span></li>
   </ul>
   </span></li>
 </ul>

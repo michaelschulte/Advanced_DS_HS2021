@@ -543,6 +543,87 @@ write_csv(x = sleep,
           path = "1_Data/sleep.csv")
 ```
 
+### G - Webseite scrapen
+
+1. Verwende `read_html()` um den Satz auf dieser Webseite: https://dataquestio.github.io/web-scraping-pages/simple.html in das Obekt `einfach` einzulesen
+
+```{r, eval = FALSE, echo = TRUE}
+XX <- read_html(XX)
+```
+
+```{r}
+einfach <- read_html("https://dataquestio.github.io/web-scraping-pages/simple.html")
+```
+
+2. Printe `einfach` und finde heraus welches Tag für uns interessant ist, um den Satz zu extrahieren.
+
+3. Genau! Wir sind am Tag `<p>` interessiert - unter Verwendung von `html_nodes()` und dann `html_text()` extrahiere den Satz: Here is some simple content for this page.
+
+```{r, eval = FALSE, echo = TRUE}
+XX %>%
+html_nodes(XX) %>%
+html_text()
+```
+
+```{r}
+einfach %>%
+html_nodes("p") %>%
+html_text()
+```
+
+4. Nun wollen wir eine ganze Tabelle extrahieren. Gehe dafür auf die Seite: <a href = "https://ourworldindata.org/famines">https://ourworldindata.org/famines</a>, auf der Daten über Hungersnöte abgebildet sind.
+
+5. Am Ende der Seite (langer scroll!) findest du eine Tabelle, in der Hungersnöte von 1846 - 2011 gelistet sind. Diese Tabelle werdden wir einlesen.
+
+6. Finde zuerst die ID der Tabelle heraus (siehe Trick in Chrome, oder rechte Maustaste und `Inspect`). Du suchst `id = tablepress-XX`. Speichere diese ID unter `css_selector` und den url im Object `url` ab.
+
+```{r, echo = TRUE, eval = FALSE}
+css_selector <- "XX"
+url <- "XX"
+```
+
+```{r}
+css_selector <- "#tablepress-73"
+url <- "https://ourworldindata.org/famines"
+```
+
+7. Lies nun die Webseite mit `read_html()` ein und schreib das Ergebnis in das Objekt `famines`.
+
+```{r, echo = TRUE, eval = FALSE}
+XX <- read_html(XX)
+```
+
+```{r}
+famines <- read_html(url)
+```
+
+8. Wähle nun mittels `html_element()` den css selector der Tabelle aus, den du weiter oben gespeichert hast.
+
+```{r, echo = TRUE, eval = FALSE}
+famines %>% 
+  html_element(XX)
+```
+
+```{r}
+famines %>% 
+  html_element(css = css_selector)
+```
+
+9. Fast fertig! Die Darstellung ist noch nicht sehr leserlich - verwende `html_table()`, um das html in einen R dataframe umzuwandeln.
+
+```{r, echo = TRUE, eval = FALSE}
+famines %>% 
+  html_element(XX) %>%
+  html_table()
+```
+
+```{r}
+famines %>% 
+  html_element(css = css_selector) %>%
+  html_table()
+```
+
+
 ### X - Mit `logical`s rechnen
 
 1. Verwende `sum()` und `>` um auszuzählen wie viele Uni Melbourne Mitarbeiter mehr als 10 Drinks pro Tag zu sich nehmen. 
