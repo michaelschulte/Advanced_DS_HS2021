@@ -14,14 +14,16 @@ output:
 # Der Plan
 
 ## Teil 1 Grundlagen + Projekt Vorarbeit
-|Datum <br><img width=10/>|Thema <br><img width=50/>|Input <br><img width=50/>|Practicals <br><img width=20/>|
+|Datum <br><img width=10/>|Thema <br><img width=50/>|Input <br><img width=50/>|Downloads <br><img width=20/>|
 |:--:|:-|:--:|:--:|
 |01.10.| Willkommen! | [slides](_sessions/Welcome/Welcome.html) | | 
 || Komplexe Daten | [slides](_sessions/Data/Data.html)|[practical](_sessions/Data/Data_practical.html)|  
 || Wrangling | [slides](_sessions/Wrangling/Wrangling.html) | [practical](_sessions/Wrangling/Wrangling_practical.html)|
+|| Literatur || [Provost2013](_materials/papers/Provost2013.pdf)|
 |15.10.| Recap | | | 
 |      | Plotting | [slides](_sessions/Plotting/Plotting.html) | [practical](_sessions/Plotting/Plotting_practical.html)|
 ||Vorstellung Projekt |<!--[slides](_sessions/ProjectIntro/ProjectIntro.html)-->|||
+|| Literatur || [Varian2016](_materials/papers/Varian2016.pdf)|
 |22.10.| Recap | | | 
 || Lineare Modelle I            | [slides](_sessions/LinearModelsI/LinearModelsI.html)|[practical](_sessions/LinearModelsI/LinearModelsI_practical.html)| [solutions](_sessions/StatistikI/StatistikI_practical_solutions.html)|
 || Reporting I | [slides](_sessions/ReportingI/ReportingI.html)| [practical](_sessions/ReportingI/ReportingI_practical.html)||
@@ -29,7 +31,7 @@ output:
 
 ## Teil 2 Projektarbeit
 
-|Datum <br><img width=10/>|Thema <br><img width=50/>|Input <br><img width=50/>|Practicals <br><img width=20/>|
+|Datum <br><img width=10/>|Thema <br><img width=50/>|Input <br><img width=50/>|Downloads <br><img width=20/>|
 |:--:|:-|:--:|:--:|
 |29.10.| Recap | | | 
 || Lineare Modelle II |[slides](_sessions/LinearModelsII/LinearModelsII.html)|[practical](_sessions/LinearModelsII/LinearModelsII_practical.html)| [solutions](_sessions/StatistikII/StatistikII_practical_solutions.html)|
@@ -55,4 +57,4 @@ output:
 
 <h2>[Installation](installation.html)</h2>
 
-<h2>[Project + Datasets](https://ads-hs2021.netlify.app/ADS_HS2021.zip)</h2>
+<h2>[Project + Datasets + Papers](https://ads-hs2021.netlify.app/ADS_HS2021.zip)</h2>
