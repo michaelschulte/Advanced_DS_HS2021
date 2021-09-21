@@ -1,15 +1,16 @@
-Willkommen zum R Bootcamp!
+Willkommen zu Advanced Datascience für Marketing Research!
 
-Als Vorbereitung zum Kurs möchte ich Sie bitten die folgende Software zu installieren (oder auf die unten angeführten Versionsnummern upzudaten):
+Sie finden alle nötigen Informationen zum Kurs hier: 
+https://ads-hs2021.netlify.app
 
-1) R in Version 4.0.5 von https://stat.ethz.ch/CRAN/ die Version für Ihr Betriebssystem wählen und installieren 
-2) RStudio Desktop in der gratis Version (min) 1.4.1106 von https://rstudio.com/products/rstudio/download/#download
+Als Vorbereitung zum Kurs möchte ich Sie bitten R und RStudio zu installieren sowie ein kurzes Script in R laufen zu lassen, das einige Pakete installieren wird, die wir im Kurs brauchen. Anleitung dafür gibt es hier: https://ads-hs2021.netlify.app/installation.html
 
-Im weiteren werden wir Zoom verwenden und Sie brauchen einen gängigen Web-Browser um auf die Inhalte des Kurses zugreifen zu können (link dafür folgt).
+Laden Sie sich bitte auch die folgende .zip Datei mit Datensätzen und einer gängigen Projektstruktur herunter und enpacken Sie das file zB auf dem Desktop (bitte nicht auf ein Netzlaufwerk legen - lokal auf Ihrem Computer): https://ads-hs2021.netlify.app/ADS_HS2021.zip
 
-Das wars eigentlich schon - idealerweise haben Sie am Beginn des Kurses R und RStudio installiert. Falls Sie Probleme haben, können Sie sich gerne schon vorher im Forum des Kurses auf Ilias melden.
+Wir treffen uns am Freitag 1.10.21 um 13.15 Uhr auf Zoom:
+https://unibe-ch.zoom.us/j/66524145087?pwd=NXBRNW15cnczcmlZMjlmM1QrOVpwZz09
 
-Freu mich auf das Bootcamp!
+Ich freue mich auf den Kurs!
 
 Liebe Grüsse
 Michael Schulte
