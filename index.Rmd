@@ -45,9 +45,9 @@ output:
 
 # Practicals
 
-Upload bitte in der Form: GRUPPE.zip spätestens bis Donnerstag 12.00 Uhr Mittag vor nächstem Kurstermin!
+- Upload bitte in der Form: GRUPPE.zip nach dem Kurs!
 
-Practicals immer als gesamtes R-Verzeichnis inkl .RProject File, Code, Plots usw hochladen. Code soll problemlos laufen!
+- Practicals immer als gesamtes R-Verzeichnis inkl .RProject File, Code, Plots usw. hochladen.
 
 <h2>[Practical Upload](https://www.dropbox.com/request/Xy2d1iene4LATNdSmVzJ)</h2>
 
