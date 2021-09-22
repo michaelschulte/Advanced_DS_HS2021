@@ -38,6 +38,7 @@ output:
 || Reporting II | [slides](_sessions/ReportingII/ReportingII.html)| [practical](_sessions/ReportingII/ReportingII_practical.html)||
 ||Projekt Arbeit||||
 |05.11.| Recap |||
+|| Externer Experte ||||
 || Reporting III | [slides](_sessions/ReportingIII/ReportingIII.html)| [practical](_sessions/ReportingIII/ReportingIII_practical.html)||
 || Reporting Slides | [slides](_sessions/Reporting_Slides/Reporting_Slides.html)| [practical](_sessions/Reporting_Slides/Reporting_Slides_practical.html)||
 ||Projekt Arbeit||||
@@ -49,7 +50,7 @@ output:
 
 - Upload bitte in der Form: GRUPPE.zip nach dem Kurs!
 
-- Practicals immer als gesamtes R-Verzeichnis inkl .RProject File, Code, Plots usw. hochladen.
+- Practicals immer als .zip Datei des gesamten R-Verzeichnises inkl .RProject File, Code, Plots usw. hochladen.
 
 <h2>[Practical Upload](https://www.dropbox.com/request/Xy2d1iene4LATNdSmVzJ)</h2>
 
