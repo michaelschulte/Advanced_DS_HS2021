@@ -848,7 +848,7 @@ patienten_ergebnisse %>%
 .pull-right5[
 
 <p align="center">
-<img src="image/tidyr-spread-gather.gif" height=420px><br>
+<img src="https://therbootcamp.github.io/EDA_2021Sep/_sessions/WranglingII/image/tidyr-spread-gather.gif" height=420px><br>
 <font style="font-size:10px">adapted from <a href="https://github.com/gadenbuie/tidyexplain">tidyexplain</a></font>
 </p>
 
