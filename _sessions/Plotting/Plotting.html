@@ -144,6 +144,11 @@ layout: true
 
 .pull-right45[
 
+
+```r
+ggplot(data = mpg)
+```
+
 ![](Plotting_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
 
 ]
@@ -172,6 +177,12 @@ layout: true
 
 .pull-right45[
 
+
+```r
+ggplot(data = mpg,
+       mapping = aes(x = displ, y = hwy))
+```
+
 ![](Plotting_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
 
 ]
@@ -189,6 +200,14 @@ layout: true
 &lt;br&gt;
 
 
+```r
+ggplot(data = mpg,
+       mapping = aes(x = displ,
+                     y = hwy)) + 
+  
+  # Plotte Daten als Punkte
+  geom_point() 
+```
 
 ]
 
@@ -281,6 +300,14 @@ ggplot(data = mpg,
 ## `geom_boxplot()`
 &lt;br&gt;
 
+
+```r
+ggplot(data = mpg,
+  mapping = aes(x = class,
+                y = hwy)) + 
+  geom_boxplot()
+```
+
 ![](Plotting_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
 
 ]
@@ -291,6 +318,14 @@ ggplot(data = mpg,
 &lt;br&gt;
 ## `geom_violin()`
 &lt;br&gt;
+
+
+```r
+ggplot(data = mpg,
+  mapping = aes(x = class,
+                y = hwy)) + 
+  geom_violin()
+```
 
 &lt;img src="Plotting_files/figure-html/unnamed-chunk-11-1.png" width="100%" /&gt;
 
@@ -334,6 +369,15 @@ ggplot(data = mpg,
 
 
 
+```r
+ggplot(data = mpg,
+       mapping = aes(x = displ, 
+                     y = hwy,
+                     
+                     # Farbe gemäss Klasse
+                     color = class)) +
+  geom_point()
+```
 
 
 ]
@@ -378,6 +422,15 @@ ggplot(data = mpg,
 &lt;/ul&gt;
 
 
+```r
+ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy,
+                     col = class)) +
+  geom_point() + 
+  
+  # Ergänze Kurve
+  geom_smooth(col = "blue")
+```
 
 ]
 
@@ -404,6 +457,16 @@ ggplot(data = mpg,
 &lt;/ul&gt;
 
 
+```r
+ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy,
+                     col = class)) +
+  geom_point() + 
+  
+  # Ergänze Kurve
+  geom_smooth(col = "blue",
+              method = "lm")
+```
 
 ]
 
@@ -427,6 +490,13 @@ ggplot(data = mpg,
 
 
 
+```r
+ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy,
+                     col = class)) +
+  geom_point() + 
+  geom_smooth() 
+```
 
 ]
 
@@ -534,6 +604,9 @@ ggplot(...) +
 .pull-right45[
 
 
+```r
+ggplot(...) + theme_gray()
+```
 
 ![](Plotting_files/figure-html/unnamed-chunk-30-1.png)&lt;!-- --&gt;
 
@@ -563,6 +636,9 @@ ggplot(...) +
 .pull-right45[
 
 
+```r
+ggplot(...) + theme_classic()
+```
 
 ![](Plotting_files/figure-html/unnamed-chunk-32-1.png)&lt;!-- --&gt;
 
@@ -592,6 +668,9 @@ ggplot(...) +
 .pull-right45[
 
 
+```r
+ggplot(...) + theme_void()
+```
 
 ![](Plotting_files/figure-html/unnamed-chunk-34-1.png)&lt;!-- --&gt;
 
@@ -621,6 +700,9 @@ ggplot(...) +
 .pull-right45[
 
 
+```r
+ggplot(...) + theme_excel()
+```
 
 ![](Plotting_files/figure-html/unnamed-chunk-36-1.png)&lt;!-- --&gt;
 
@@ -650,6 +732,9 @@ ggplot(...) +
 .pull-right45[
 
 
+```r
+ggplot(...) + theme_economist()
+```
 
 ![](Plotting_files/figure-html/unnamed-chunk-38-1.png)&lt;!-- --&gt;
 
@@ -680,6 +765,9 @@ ggplot(...) +
 .pull-right45[
 
 
+```r
+ggplot(...) + theme_bw()
+```
 
 ![](Plotting_files/figure-html/unnamed-chunk-40-1.png)&lt;!-- --&gt;
 
@@ -738,8 +826,8 @@ ggplot(data = mpg,
 .pull-right45[
 
 &lt;p align="center"&gt;
-&lt;img src="image/button.jpeg" height="420px"&gt;&lt;br&gt;
-&lt;font style="font-size:10px"&gt;from &lt;a href="http://www.lonniemillsap.com/?p=1779"&gt;lonniemillsap.com&lt;/a&gt;&lt;/font&gt;
+&lt;img src="http://www.lonniemillsap.com/wp-content/uploads/2013/07/eject-color.jpg" height="420px"&gt;&lt;br&gt;
+&lt;font style="font-size:10px"&gt;from &lt;a href="http://www.lonniemillsap.com/wp-content/uploads/2013/07/eject-color.jpg"&gt;lonniemillsap.com&lt;/a&gt;&lt;/font&gt;
 &lt;/p&gt;
 
 ]
@@ -758,6 +846,16 @@ ggplot(data = mpg,
 &lt;/ul&gt;
 
 
+```r
+# Weise Plot Objekt zu
+mein_plot &lt;- ggplot(data = mpg,
+                    aes(x = displ,y = hwy)) + 
+  geom_point() + theme_bw()
+
+# Zeige Klasse
+class(mein_plot)
+```
+
 ```
 ## [1] "gg"     "ggplot"
 ```
@@ -765,6 +863,11 @@ ggplot(data = mpg,
 ]
 
 .pull-right45[
+
+
+```r
+mein_plot 
+```
 
 ![](Plotting_files/figure-html/unnamed-chunk-44-1.png)&lt;!-- --&gt;
 
@@ -783,6 +886,16 @@ ggplot(data = mpg,
 &lt;/ul&gt;
 
 
+```r
+# Weise Plot Objekt zu
+mein_plot &lt;- ggplot(data = mpg,
+                    aes(x = displ,y = hwy)) + 
+  geom_point() + theme_bw()
+
+# Zeige Klasse
+class(mein_plot)
+```
+
 ```
 ## [1] "gg"     "ggplot"
 ```
@@ -790,6 +903,11 @@ ggplot(data = mpg,
 ]
 
 .pull-right45[
+
+
+```r
+mein_plot + geom_smooth()
+```
 
 ![](Plotting_files/figure-html/unnamed-chunk-46-1.png)&lt;!-- --&gt;
 
@@ -913,6 +1031,13 @@ ggplot(data = mpg,
 &lt;/ul&gt;
 
 
+```r
+# Verwendung von theme
+mein_plot + 
+  theme(argument = element_*(), 
+        argument = element_*(),
+        ...)
+```
 
 ]
 
@@ -939,6 +1064,15 @@ ggplot(data = mpg,
 &lt;/ul&gt;
 
 
+```r
+# Ändere den Hintergrund
+mein_plot + 
+  theme(
+    panel.background = 
+      element_rect(fill = 'tomato'), 
+    plot.background = 
+      element_rect(fill = 'burlywood'))
+```
 
 ]
 
@@ -964,6 +1098,15 @@ ggplot(data = mpg,
 &lt;/ul&gt;
 
 
+```r
+# Ändere das Raster
+mein_plot + 
+  theme(
+    panel.grid.major = 
+      element_line(colour = "salmon"),
+    panel.grid.minor = 
+      element_line(colour = "seagreen"))
+```
 
 ]
 
@@ -989,6 +1132,17 @@ ggplot(data = mpg,
 &lt;/ul&gt;
 
 
+```r
+# Ändere das Raster
+mein_plot + 
+  theme(
+    panel.grid.major = 
+      element_line(colour = "salmon",
+                   size = 3),
+    panel.grid.minor = 
+      element_line(colour = "seagreen",
+                   size = 1.5))
+```
 
 ]
 
@@ -1016,6 +1170,18 @@ ggplot(data = mpg,
 &lt;/ul&gt;
 
 
+```r
+# Ändere die Achsen
+mein_plot + 
+  theme(
+    axis.line.x = 
+      element_line(colour = "deeppink", 
+                   size = 3.5, 
+                   lineend = "butt"),
+    axis.line.y = 
+      element_line(colour = "deeppink", 
+                   size = 3.5))
+```
 
 ]
 
@@ -1043,6 +1209,17 @@ ggplot(data = mpg,
 &lt;/ul&gt;
 
 
+```r
+# change grid line color
+mein_plot + 
+  theme(
+    axis.title.x = 
+      element_text(family = "Comic Sans MS", 
+                   size = 30),
+    axis.title.y = 
+      element_text(family = "Comic Sans MS", 
+                   size = 30))
+```
 
 ]
 
@@ -1163,6 +1340,26 @@ ggplot(data = mpg,
 .pull-left45[
 
 
+```r
+mein_theme &lt;- theme(
+  panel.background = 
+    element_rect(fill = 'tomato'), 
+  plot.background = 
+    element_rect(fill = 'burlywood'),
+  panel.grid.major = element_line(
+    colour = "salmon", size = 3),
+  panel.grid.minor = element_line(
+    colour = "seagreen", size = 1.5),
+  axis.line.x = element_line(
+    colour = "deeppink", size = 3.5, 
+    lineend = "butt"),
+  axis.line.y = element_line(
+    colour = "deeppink", size = 3.5),
+  axis.title.x = element_text(
+    family = "Comic Sans MS", size = 30),
+  axis.title.y = element_text(
+    family = "Comic Sans MS", size = 30))
+```
 
 ]
 
@@ -1186,6 +1383,26 @@ mein_plot
 .pull-left45[
 
 
+```r
+mein_theme &lt;- theme(
+  panel.background = 
+    element_rect(fill = 'tomato'), 
+  plot.background = 
+    element_rect(fill = 'burlywood'),
+  panel.grid.major = element_line(
+    colour = "salmon", size = 3),
+  panel.grid.minor = element_line(
+    colour = "seagreen", size = 1.5),
+  axis.line.x = element_line(
+    colour = "deeppink", size = 3.5, 
+    lineend = "butt"),
+  axis.line.y = element_line(
+    colour = "deeppink", size = 3.5),
+  axis.title.x = element_text(
+    family = "Comic Sans MS", size = 30),
+  axis.title.y = element_text(
+    family = "Comic Sans MS", size = 30))
+```
 
 ]
 
@@ -1440,6 +1657,21 @@ unschoen &lt;- mein_plot + mein_theme
 .pull-right45[
 
 
+```r
+# Kreiere meinen Plot
+mein_plot &lt;- ggplot(data = mpg,
+                 aes(x = displ, y = hwy)) + 
+            geom_point() + 
+            mytheme
+
+# Kreiere "mein_plot.pdf"
+ggsave(filename = "mein_plot",
+       plot = mein_plot,
+       device = "pdf",
+       path = "figures",
+       width = 6, 
+       height = 4)
+```
 
 ]
 
@@ -1468,6 +1700,21 @@ unschoen &lt;- mein_plot + mein_theme
 .pull-right45[
 
 
+```r
+# Kreiere meinen Plot
+mein_plot &lt;- ggplot(data = mpg,
+                 aes(x = displ, y = hwy)) + 
+            geom_point() + 
+            mytheme
+
+# Kreiere "mein_plot.png"
+ggsave(filename = "mein_plot",
+       plot = mein_plot,
+       device = "png",
+       path = "figures",
+       width = 6, 
+       height = 4)
+```
 
 ]
 
