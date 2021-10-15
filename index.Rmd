@@ -41,7 +41,7 @@ output:
 || Reporting III | [slides](_sessions/ReportingIII/ReportingIII.html)| [practical](_sessions/ReportingIII/ReportingIII_practical.html)||
 || Reporting Slides | [slides](_sessions/Reporting_Slides/Reporting_Slides.html)| [practical](_sessions/Reporting_Slides/Reporting_Slides_practical.html)||
 ||Projekt Arbeit||||
-<!--||[LV Evaluation](https://scanserveruls.unibe.ch/evasys/online.php?pswd=Y81PX)||||-->
+||[LV Evaluation]<!--(https://scanserveruls.unibe.ch/evasys/online.php?pswd=Y81PX)-->||||
 |26.11.| Projektpräsentationen || <!--[feedback](https://forms.gle/38LagXxyH2cMHynt8)-->| 
 ||Next Steps|<!--[Next steps](_sessions/NextSteps/NextSteps.html) -->|  | | 
 
