@@ -1100,7 +1100,7 @@ mein_plot +
 .pull-right45[
 
 <p align="center">
-<img src="image/theme.png">
+<img src="image/theme.png", height = 450>
 </p>
 ]
 
