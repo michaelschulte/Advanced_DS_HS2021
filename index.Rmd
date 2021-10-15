@@ -22,7 +22,7 @@ output:
 || Literatur || [Provost 2013](_sessions/_materials/papers/Provost2013.pdf)|
 |15.10.| Recap | | | 
 |      | Plotting | [slides](_sessions/Plotting/Plotting.html) | [practical](_sessions/Plotting/Plotting_practical.html)|
-||Vorstellung Projekt |[slides](_sessions/Project/Project.html)|||
+||Vorstellung Projekt |[slides](_sessions/Project/Project.html)|[board](https://miro.com/app/board/o9J_lqOInsg=/?invite_link_id=920976306802)||
 || Literatur || [Varian 2016](_sessions/_materials/papers/Varian2016.pdf)|
 |22.10.| Recap | | | 
 || Lineare Modelle I            | [slides](_sessions/LinearModelsI/LinearModelsI.html)|[practical](_sessions/LinearModelsI/LinearModelsI_practical.html)| [solutions](_sessions/StatistikI/StatistikI_practical_solutions.html)|
@@ -38,10 +38,10 @@ output:
 || Reporting II | [slides](_sessions/ReportingII/ReportingII.html)| [practical](_sessions/ReportingII/ReportingII_practical.html)||
 ||Projekt Arbeit||||
 |05.11.| Recap |||
-|| Externer Experte ||||
 || Reporting III | [slides](_sessions/ReportingIII/ReportingIII.html)| [practical](_sessions/ReportingIII/ReportingIII_practical.html)||
 || Reporting Slides | [slides](_sessions/Reporting_Slides/Reporting_Slides.html)| [practical](_sessions/Reporting_Slides/Reporting_Slides_practical.html)||
 ||Projekt Arbeit||||
+<!--||[LV Evaluation](https://scanserveruls.unibe.ch/evasys/online.php?pswd=Y81PX)||||-->
 |26.11.| Projektpräsentationen || <!--[feedback](https://forms.gle/38LagXxyH2cMHynt8)-->| 
 ||Next Steps|<!--[Next steps](_sessions/NextSteps/NextSteps.html) -->|  | | 
 
