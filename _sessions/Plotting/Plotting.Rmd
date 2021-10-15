@@ -14,7 +14,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE,
+knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE,
                       message = FALSE)
 options(htmltools.dir.version = FALSE)
@@ -881,8 +881,8 @@ goal
 .pull-right45[
 
 <p align="center">
-<img src="image/button.jpeg" height="420px"><br>
-<font style="font-size:10px">from <a href="http://www.lonniemillsap.com/?p=1779">lonniemillsap.com</a></font>
+<img src="http://www.lonniemillsap.com/wp-content/uploads/2013/07/eject-color.jpg" height="420px"><br>
+<font style="font-size:10px">from <a href="http://www.lonniemillsap.com/wp-content/uploads/2013/07/eject-color.jpg">lonniemillsap.com</a></font>
 </p>
 
 ]
