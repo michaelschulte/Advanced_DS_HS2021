@@ -23,11 +23,13 @@ output:
 |15.10.| Recap | | | 
 |      | Plotting | [slides](_sessions/Plotting/Plotting.html) | [practical](_sessions/Plotting/Plotting_practical.html)|
 ||Vorstellung Projekt |[slides](_sessions/Project/Project.html)|[board](https://miro.com/app/board/o9J_lqOInsg=/?invite_link_id=920976306802)||
-|| Literatur || [Varian 2016](_sessions/_materials/papers/Varian2016.pdf)|
 |22.10.| Recap | | | 
 || Lineare Modelle I            | [slides](_sessions/LinearModelsI/LinearModelsI.html)|[practical](_sessions/LinearModelsI/LinearModelsI_practical.html)| [solutions](_sessions/StatistikI/StatistikI_practical_solutions.html)|
 || Reporting I | [slides](_sessions/ReportingI/ReportingI.html)| [practical](_sessions/ReportingI/ReportingI_practical.html)||
 ||Projekt Pitches||||
+
+<!--|| Literatur || [Varian 2016](_sessions/_materials/papers/Varian2016.pdf)|-->
+
 
 ## Teil 2 Projektarbeit
 
@@ -39,12 +41,12 @@ output:
 ||Projekt Arbeit||||
 |05.11.| Recap |||
 || Reporting III | [slides](_sessions/ReportingIII/ReportingIII.html)| [practical](_sessions/ReportingIII/ReportingIII_practical.html)||
-|| Reporting Slides | [slides](_sessions/Reporting_Slides/Reporting_Slides.html)| [practical](_sessions/Reporting_Slides/Reporting_Slides_practical.html)||
 ||Projekt Arbeit||||
-||[LV Evaluation]<!--(https://scanserveruls.unibe.ch/evasys/online.php?pswd=Y81PX)-->||||
+||LV Evaluation|<!--[Evaluation](https://scanserveruls.unibe.ch/evasys/online.php?pswd=Y81PX)-->|||
 |26.11.| Projektpräsentationen || <!--[feedback](https://forms.gle/38LagXxyH2cMHynt8)-->| 
 ||Next Steps|<!--[Next steps](_sessions/NextSteps/NextSteps.html) -->|  | | 
 
+<!-- || Reporting Slides | [slides](_sessions/Reporting_Slides/Reporting_Slides.html)| [practical](_sessions/Reporting_Slides/Reporting_Slides_practical.html)|| -->
 
 # Practicals
 

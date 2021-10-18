@@ -178,7 +178,7 @@ basel <- read.csv("1_Data/basel.csv")
 .pull-right6[
 
 <br><br>
-<iframe src="`r noquote(baselink)`/Advanced_DS_HS2021/_sessions/ReportingI/ReportingI.html" width="800" height="500"></iframe>
+<iframe src="`r noquote(baselink)`/_sessions/ReportingI/ReportingI.html" width="800" height="500"></iframe>
 
 ]
 
