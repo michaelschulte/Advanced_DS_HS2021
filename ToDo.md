@@ -2,4 +2,4 @@
 
 - Anforderungen klarer formulieren - Advanced 
 - Session 1+2 kürzen - mehr als Wiederholung aufbauen
-
+ 
