@@ -13,7 +13,7 @@
 
 <title>Plotting</title>
 
-<script src="Plotting_practical_files/header-attrs-2.8/header-attrs.js"></script>
+<script src="Plotting_practical_files/header-attrs-2.10/header-attrs.js"></script>
 <script src="Plotting_practical_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="Plotting_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -233,22 +233,30 @@ pre code {
 </ol>
 <pre class="r"><code>ggplot(data = mcdonalds, 
        mapping = aes(x = XX, y = XX))</code></pre>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat))</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Verwende <code>geom_point()</code> und <code>+</code> um Punkte zu plotten.</li>
 </ol>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat)) +
+  geom_point()</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Verwende das <code>col</code> Argument in <code>aes()</code> um die Farbe nach der Variable <code>Category</code> variieren zu lassen.</li>
 </ol>
 <pre class="r"><code>ggplot(mcdonalds, aes(x = XX, y = XX, col = XX)) +
   geom_point() </code></pre>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
+  geom_point()</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Verwende <code>geom_smooth()</code> um eine angepasste Linie zu ergänzen.</li>
 </ol>
 <pre class="r"><code>ggplot(mcdonalds, aes(x = XX, y = XX, col = XX)) +
   geom_point() </code></pre>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
+  geom_point() +
+  geom_smooth()</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Oops! Hast du mehre Linien anstatt einer bekommen? Löse das Problem indem du die Farbe innerhalb von <code>geom_smooth()</code> auf <code>black</code> setzt.</li>
@@ -256,6 +264,9 @@ pre code {
 <pre class="r"><code>ggplot(mcdonalds, aes(x = XX, y = XX, col = XX)) +
   geom_point() +
   geom_smooth(col = &quot;XX&quot;) </code></pre>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
+  geom_point() +
+  geom_smooth(col = &quot;black&quot;)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Verwende <code>labs()</code> um den Plot angemessen zu annotieren.</li>
@@ -266,6 +277,12 @@ pre code {
   labs(title = &quot;XX&quot;,
        subtitle = &quot;XX&quot;,
        caption = &quot;XX&quot;)</code></pre>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
+  geom_point() +
+  geom_smooth(col = &quot;black&quot;) +
+  labs(title = &quot;McDonalds Nährwerte&quot;,
+       subtitle = &quot;Jeder Punkt ist ein Menü-Item&quot;,
+       caption = &quot;Quelle: Kaggle.com&quot;)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>Verwende <code>xlim()</code>, eine einfache Version von <code>scale_x_continuous()</code>, um die x-Achse auf die Werte <code>0</code> und <code>1250</code> zu begrenzen.</li>
@@ -277,10 +294,25 @@ pre code {
        subtitle = &quot;XX&quot;,
        caption = &quot;XX&quot;) +
   xlim(XX, XX)</code></pre>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
+  geom_point() +
+  geom_smooth(col = &quot;black&quot;) +
+  labs(title = &quot;McDonalds Nährwerte&quot;,
+       subtitle = &quot;Jeder Punkt ist ein Menü-Item&quot;,
+       caption = &quot;Quelle: Kaggle.com&quot;) +
+  xlim(0, 1250)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="8" style="list-style-type: decimal">
 <li>Abschliessend verwende <code>theme_minimal()</code> um die Ästhetik des Plots anzupassen.</li>
 </ol>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
+  geom_point() +
+  geom_smooth(col = &quot;black&quot;) +
+  labs(title = &quot;McDonalds Nährwerte&quot;,
+       subtitle = &quot;Jeder Punkt ist ein Menü-Item&quot;,
+       caption = &quot;Quelle: Kaggle.com&quot;) +
+  xlim(0, 1250) +
+  theme_minimal()</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="d---geoms" class="section level3">
@@ -291,18 +323,37 @@ pre code {
 <pre class="r"><code>ggplot(data = mcdonalds, 
        aes(x = XX, y = XX, fill = XX)) +
   geom_violin()</code></pre>
+<pre class="r"><code>ggplot(data = mcdonalds, 
+       aes(x = Category, y = Calories, fill = Category)) +
+  geom_violin()</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-19-1.png" width="768" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Ergänze mit <code>labs()</code> einen angemessenen Titel (<code>title</code>) und Untertitel (<code>subtitle</code>).</li>
 </ol>
+<pre class="r"><code>ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
+  geom_violin() +
+  labs(title = &quot;McDonalds&quot;,
+       subtitle = &quot;Kalorienverteilung pro Menü Kategorie&quot;)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-20-1.png" width="768" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Ergänze <code>guides(fill = FALSE)</code>, so dass keine Legende gezeigt wird.</li>
 </ol>
+<pre class="r"><code>ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
+  geom_violin() +
+  labs(title = &quot;McDonalds&quot;,
+       subtitle = &quot;Kalorienverteilung pro Menü Kategorie&quot;) +
+  guides(fill = FALSE)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-21-1.png" width="768" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Verwende <code>geom_jitter()</code> um Punkte über die Violinen zu plotten. Setze in der Funktion <code>width = .1</code> und <code>alpha = .5</code>.</li>
 </ol>
+<pre class="r"><code>ggplot(data = mcdonalds, 
+       aes(x = Category, y = Calories, fill = Category)) +
+  geom_violin() +
+  labs(title = &quot;McDonalds&quot;,
+       subtitle = &quot;Kalorienverteilung pro Menü Kategorie&quot;) +
+  guides(fill = FALSE) +
+  geom_jitter(width = .1, alpha = .5)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-22-1.png" width="768" style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Probiere ein paar Sachen aus:</li>
@@ -333,7 +384,23 @@ pre code {
 <li><p>Wo sind die Labels? Ah, du hast <code>ggplot</code> nicht gesagt welche Spalte die Information beinhaltet, die in den Labels stehen soll. Behebe dieses Problem indem du innerhalb der <code>aes()</code> Funktion dem Argument <code>label</code> die Spalte <code>Item</code> zuweist. Führe den Code nochmal aus. Jetzt solltest du viele labels sehen!</p></li>
 <li><p>Passe <code>geom_text()</code> an in dem du <code>col</code> auf <code>black</code>, <code>check_overlap</code> auf <code>TRUE</code>, und <code>hjust</code> auf <code>left</code> setzt.</p></li>
 <li><p>Verwende nun das <code>data</code> Argument in <code>geom_text()</code> und weise ihm einen gefilterten Auschnitt des <code>mcdonalds</code> Datensatzes zu, nämlich <code>data = mcdonalds %&gt;% filter(Calories &gt; 1100)</code>. Schau was passiert.</p></li>
-<li><p>Probiere ein paar Sachen aus:</p></li>
+</ol>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Sugars, 
+                      y = Calories, 
+                      col = Category, 
+                      label = Item)) +
+  geom_point() +
+  geom_text(data = mcdonalds %&gt;% 
+            filter(Calories &gt; 1100),
+            col = &quot;black&quot;, 
+            check_overlap = TRUE, 
+            hjust = &quot;left&quot;) +
+  xlim(0, 150) +
+  ylim(0, 2000) +
+  theme_minimal() +
+  labs(title = &quot;Ergänze Labels zu einem Plot mit geom_text()&quot;)</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Probiere ein paar Sachen aus:</li>
 </ol>
 <ul>
 <li><p>Verwende das <code>size</code> Argument in <code>aes()</code>, so dass die Grösse der Punkte den <code>Calories</code> entspricht.</p></li>
@@ -350,6 +417,11 @@ pre code {
                fun = &quot;mean&quot;) +
   labs(title = &quot;XX&quot;,
        subtitle = &quot;XX&quot;)</code></pre>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Category, y = Calories)) +
+  stat_summary(geom = &quot;bar&quot;, 
+               fun = &quot;mean&quot;) +
+  labs(title = &quot;Calories gegen McDonalds Menu Kategorie&quot;,
+       subtitle = &quot;Balken repräsentieren Mittelwwerte&quot;)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-27-1.png" width="960" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Probiere ein paar Sachen aus:</li>
@@ -359,6 +431,14 @@ pre code {
 <li>Gib jedem Balken eine andere Farbe.</li>
 <li>Ergänze Punkte über den Balken mit <code>geom_point()</code>, <code>geom_count()</code>, oder <code>geom_jitter()</code>.</li>
 </ul>
+<pre class="r"><code>ggplot(mcdonalds, aes(x = Category, 
+                      y = Calories, 
+                      col = Category)) +
+  stat_summary(geom = &quot;bar&quot;, 
+               fun = &quot;median&quot;) +
+  geom_jitter() +
+  labs(title = &quot;Calories gegen McDonalds Menu Kategorie&quot;,
+       subtitle = &quot;Balken repräsentieren Mittelwwerte&quot;)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-28-1.png" width="960" style="display: block; margin: auto;" /></p>
 </div>
 <div id="g---neuer-datensatz---neus-glück" class="section level3">
@@ -381,14 +461,35 @@ pre code {
   labs(title = &quot;Verbrechen&quot;,
        subtitle = &quot;Haeufigkeit und Nutzung öffentlicher Verkehrsmittel&quot;) +
   theme_minimal()</code></pre>
+<pre class="r"><code>ggplot(verbrechen, aes(x = prozent_metro, 
+                       y = haeufigkeit)) +
+  geom_point(alpha = .3) +
+  labs(title = &quot;Verbrechen&quot;,
+       subtitle = &quot;Haeufigkeit und Nutzung öffentlicher Verkehrsmittel&quot;) +
+  theme_minimal()</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-31-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Sieht noch nicht so informativ aus. Ergänze <code>scale_x_continuous(trans = 'pseudo_log')</code> und <code>scale_y_continuous(trans = 'pseudo_log')</code> um die y und x-Achse zu stauchen. Später noch mehr zu Skalierungen.</li>
 </ol>
+<pre class="r"><code>ggplot(verbrechen, aes(x = prozent_metro, 
+                       y = haeufigkeit)) +
+  geom_point(alpha = .3) +
+  labs(title = &quot;Verbrechen&quot;,
+       subtitle = &quot;Haeufigkeit und Nutzung öffentlicher Verkehrsmittel&quot;) +
+  scale_x_continuous(trans = &#39;pseudo_log&#39;) + 
+  scale_y_continuous(trans = &#39;pseudo_log&#39;)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-32-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Besser, oder? Jetzt zeichnet sich ein schwach positiver Zusammenhang ab. Könnte das anders aussehen, wenn man die verschiedenen Klassen von Verbrechen differenziert? Versuche dies mal über verschiedene Farben indem du <code>verbrechen</code> dem <code>col</code> Argument in <code>aes()</code> zuweist.</li>
 </ol>
+<pre class="r"><code>ggplot(verbrechen, aes(x = prozent_metro, 
+                       y = haeufigkeit,
+                       col = verbrechen)) +
+  geom_point(alpha = .3) +
+  labs(title = &quot;Verbrechen&quot;,
+       subtitle = &quot;Haeufigkeit und Nutzung öffentlicher Verkehrsmittel&quot;) +
+  scale_x_continuous(trans = &#39;pseudo_log&#39;) + 
+  scale_y_continuous(trans = &#39;pseudo_log&#39;)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-33-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Nicht wirklich informativ, oder? Anstatt mit <code>col</code> versuche nun die verschiedenen Verbrechen mit <code>facet_wrap()</code> zu differenzieren. Siehe unten.</li>
@@ -401,6 +502,14 @@ pre code {
   scale_x_continuous(trans = &#39;pseudo_log&#39;) + 
   scale_y_continuous(trans = &#39;pseudo_log&#39;) +
   facet_wrap(~ XX)</code></pre>
+<pre class="r"><code>ggplot(verbrechen, aes(x = prozent_metro, 
+                       y = haeufigkeit)) +
+  geom_point(alpha = .2) +
+  labs(title = &quot;Verbrechen&quot;,
+       subtitle = &quot;Haeufigkeit und Nutzung öffentlicher Verkehrsmittel&quot;) +
+  scale_x_continuous(trans = &#39;pseudo_log&#39;) + 
+  scale_y_continuous(trans = &#39;pseudo_log&#39;) +
+  facet_wrap(~verbrechen)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-35-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Es zeichnet sich ab, dass nicht alle Verbrechen gleich mit dem Anteil Metro-fahrender zusammenhängen. Der stärkste Zusammenhang scheint zu Autodiebstählen und Raubüberfällen zu bestehen. Kann aber natürlich sein, dass eine dritte Variable diesen Zusammenhang treibt, z.B. der Prozentsatz unter der Armutsgrenze lebender Personen. Verwende <code>facet_grid()</code> um gleichzeitig nach Verbrechen und <code>prozent_armut</code> kleiner oder grösser 10% zu differenzieren. Wie du im Code siehst, kannst du den logischen Vergleich direkt in die Funktion schreiben.</li>
@@ -413,6 +522,14 @@ pre code {
   scale_x_continuous(trans = &#39;pseudo_log&#39;) + 
   scale_y_continuous(trans = &#39;pseudo_log&#39;) +
   facet_grid(XX &gt; 10 ~ XX)</code></pre>
+<pre class="r"><code>ggplot(verbrechen, aes(x = prozent_metro, 
+                       y = haeufigkeit)) +
+  geom_point(alpha = .2) +
+  labs(title = &quot;Verbrechen&quot;,
+       subtitle = &quot;Haeufigkeit und Nutzung öffentlicher Verkehrsmittel&quot;) +
+  scale_x_continuous(trans = &#39;pseudo_log&#39;) + 
+  scale_y_continuous(trans = &#39;pseudo_log&#39;) + 
+  facet_grid(prozent_armut &gt; 10 ~ verbrechen)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-37-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Relativ eindeutig: Die Anzahl Metro-fahrender ist nur mit Verbrechen assoziiert, wenn die Bezirke eine hohe Armut aufweisen. Gleichzeitig gibt es praktisch keine Differenzierung mehr: Alle Verbrechen sind mit der Anzahl Metro-fahrender assoziert. Seltsam, oder? Vielleicht haben wir noch nicht die richtige Drittvariable. Probiere doch mal <code>bevoelkerung_dichte</code> grösser als <code>5000</code> als erste Variable in <code>facet_grid()</code> aus.</li>
@@ -425,6 +542,14 @@ pre code {
   scale_x_continuous(trans = &#39;pseudo_log&#39;) + 
   scale_y_continuous(trans = &#39;pseudo_log&#39;) +
   facet_grid(XX &gt; 5000 ~ XX)</code></pre>
+<pre class="r"><code>ggplot(verbrechen, aes(x = prozent_metro, 
+                       y = haeufigkeit)) +
+  geom_point(alpha = .2) +
+  labs(title = &quot;Verbrechen&quot;,
+       subtitle = &quot;Haeufigkeit und Nutzung öffentlicher Verkehrsmittel&quot;) +
+  scale_x_continuous(trans = &#39;pseudo_log&#39;) + 
+  scale_y_continuous(trans = &#39;pseudo_log&#39;) + 
+  facet_grid(bevoelkerung_dichte &gt; 5000 ~ verbrechen)</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-39-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>Der Zusammenhang ist verschwunden. Wir haben von Beginn an übersehen, dass viele Metro-fahrer stark mit einer hohen Bevölkerungsdichte assoziert ist und diese wiederum mit der Anzahl von Delikten. Spiele ein wenig herum. Welche Zusammenhänge kannst du noch entdecken?</li>
@@ -437,12 +562,25 @@ pre code {
 <li>Zuallererst speichere deinen Plot als ein <code>gg</code> Objekt mit Namen <code>verbrechen_gg</code>.</li>
 </ol>
 <pre class="r"><code>verbrechen_gg &lt;- XX</code></pre>
+<pre class="r"><code>verbrechen_gg &lt;- ggplot(verbrechen, 
+                        aes(x = prozent_metro, 
+                            y = haeufigkeit)) +
+  geom_point(alpha = .2) +
+  labs(title = &quot;Verbrechen&quot;,
+       subtitle = &quot;Haeufigkeit und Nutzung öffentlicher Verkehrsmittel&quot;) +
+  scale_x_continuous(trans = &#39;pseudo_log&#39;) + 
+  scale_y_continuous(trans = &#39;pseudo_log&#39;) + 
+  facet_grid(bevoelkerung_dichte &gt; 5000 ~ verbrechen)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Ändere die Farbe des Hintergrunds des Panels zu <code>white</code>. Verwende hierzu das <code>panel.background</code> in der <code>theme()</code> Funktion und die <code>element_rect()</code> Helferfunktion.</li>
 </ol>
 <pre class="r"><code>verbrechen_gg + 
   theme(
     panel.background = element_rect(fill = XX)
+    )</code></pre>
+<pre class="r"><code>verbrechen_gg + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;)
     )</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-43-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
@@ -453,6 +591,12 @@ pre code {
     panel.background = element_rect(fill = XX),
     panel.grid.major = element_line(color = XX, size = XX),
     panel.grid.minor = element_line(color = XX, size = XX)
+    )</code></pre>
+<pre class="r"><code>verbrechen_gg + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1)
     )</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-45-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
@@ -465,6 +609,13 @@ pre code {
     panel.grid.minor = element_line(color = XX, size = XX),
     strip.background = element_rect(fill = XX),
     )</code></pre>
+<pre class="r"><code>verbrechen_gg + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;)
+    )</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-47-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Nun ändere die Schriftart der Überschriften zu <code>italic</code> mit dem <code>face</code> Argument, setze den Text rechtsbündig (<code>hjust = 1</code>) und die Schriftgrösse (<code>size</code>) auf <code>12</code>. Verwende hierzu das <code>strip.text</code> Argument und die genannten Argumente in <code>element_text()</code>. Siehe <code>?element_text()</code>.</li>
@@ -476,6 +627,14 @@ pre code {
     panel.grid.minor = element_line(color = XX, size = XX),
     strip.background = element_rect(fill = XX),
     strip.text = element_text(face = XX, size = XX, hjust = XX)
+    )</code></pre>
+<pre class="r"><code>verbrechen_gg + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1)
     )</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-49-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="6" style="list-style-type: decimal">
@@ -490,6 +649,16 @@ pre code {
     strip.text = element_text(face = XX, size = XX, hjust = XX),
     axis.title.x = element_text(size = XX, margin = margin(t = XX)),
     axis.title.y = element_text(size = XX, margin = margin(r = XX)),
+    )</code></pre>
+<pre class="r"><code>verbrechen_gg + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10))
     )</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-51-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="7" style="list-style-type: decimal">
@@ -506,6 +675,17 @@ pre code {
     axis.title.y = element_text(size = XX, margin = margin(r = XX)),
     panel.spacing = unit(XX, units = XX)
     )</code></pre>
+<pre class="r"><code>verbrechen_gg + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),
+    panel.spacing = unit(1.1, units = &quot;lines&quot;)
+    )</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-53-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="j---mein-theme-objekt" class="section level3">
@@ -518,6 +698,16 @@ pre code {
   XX = XX,
   ...
   )</code></pre>
+<pre class="r"><code>mein_theme &lt;- theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),
+    panel.spacing = unit(1.1, units = &quot;lines&quot;)
+    )</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Jetzt kreiere einen neuen Plot mit anderen Variablen als zuvor und ergänze <code>mein_theme</code> (Ohne Klammern).</li>
 </ol>
@@ -557,11 +747,26 @@ pre code {
   mein_theme
 
 verbrechen_gg</code></pre>
+<pre class="r"><code>verbrechen_gg &lt;- ggplot(data = verbrechen, 
+                        mapping = aes(x = prozent_metro, 
+                                     y = haeufigkeit,
+                                     col = staat,
+                                     size = bevoelkerung)) +
+  geom_point(alpha = .5) +
+  labs(title = &quot;Verbrechen&quot;,
+       subtitle = &quot;Haeufigkeit und Nutzung öffentlicher Verkehrsmittel&quot;) +
+  scale_x_continuous(trans = &#39;pseudo_log&#39;) + 
+  scale_y_continuous(trans = &#39;pseudo_log&#39;) + 
+  facet_wrap(~ verbrechen) +
+  mein_theme
+
+verbrechen_gg</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-59-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Als erstes verwende <code>sclale_size()</code> und darin das <code>range</code> argument um die Grösse der Punkte zu verkleinern. Damit kannst du die Überlappung etwas verringern. Probiere ein paar Werte für die untere und obere Grenze aus, die jeweils kleiner als <code>10</code> sein sollten, um einen guten Trade-off zwischen Grösse und Überlappung zu finden.</li>
 </ol>
 <pre class="r"><code>verbrechen_gg + scale_size(range = c(XX, XX))</code></pre>
+<pre class="r"><code>verbrechen_gg + scale_size(range = c(.5, 3))</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-61-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Nun ändere die Farben mit <code>scale_color_colorblind()</code> (spezifische Version von <code>scale_color_gradient()</code>), so dass die Farben auch per Helligkeit voneinander abgrenzbar sind.</li>
@@ -569,12 +774,18 @@ verbrechen_gg</code></pre>
 <pre class="r"><code>verbrechen_gg + 
   scale_size(range = c(XX, XX)) + 
   scale_color_colorblind()</code></pre>
+<pre class="r"><code>verbrechen_gg + 
+  scale_size(range = c(.5, 3)) + 
+  scale_color_colorblind()</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-63-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Alternativ kann man die Farbskala selbst setzen. Verwende <code>scale_color_manual()</code> und die <code>viridis()</code> Funktion aus dem <code>viridis</code> Paket (nicht vergessen zu laden) um die Farben manuell anzupassen. Viridis ist ein anderer, etablierter und etwas schönerer Farbsatz, der ebenfalls Helligkeitsunterschiede berücksichtigt.</li>
 </ol>
 <pre class="r"><code>verbrechen_gg + 
   scale_size(range = c(XX, XX)) + 
+  scale_color_manual(values = viridis(7))</code></pre>
+<pre class="r"><code>verbrechen_gg +
+  scale_size(range = c(.5, 3)) + 
   scale_color_manual(values = viridis(7))</code></pre>
 <p><img src="Plotting_practical_files/figure-html/unnamed-chunk-65-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="6" style="list-style-type: decimal">
@@ -584,8 +795,16 @@ verbrechen_gg</code></pre>
 <div id="l---bilddateien" class="section level3">
 <h3>L - Bilddateien</h3>
 <ol style="list-style-type: decimal">
-<li><p>Es ist an der Zeit euren Plot als eine Bilddatei zu speichern. Verwende nun <code>ggsave</code> um deinen letzten <code>verbrechen_gg</code> plot als eine <code>.pdf</code>-Datei unter dem Namen <code>verbrechen.pdf</code> zu speichern. Danach solltest du deinen Plot im Ordner <code>3_Figures</code> finden. Schaue nach und öffne die Datei.</p></li>
-<li><p>Probiere ein paar Sachen aus:</p></li>
+<li>Es ist an der Zeit euren Plot als eine Bilddatei zu speichern. Verwende nun <code>ggsave</code> um deinen letzten <code>verbrechen_gg</code> plot als eine <code>.pdf</code>-Datei unter dem Namen <code>verbrechen.pdf</code> zu speichern. Danach solltest du deinen Plot im Ordner <code>3_Figures</code> finden. Schaue nach und öffne die Datei.</li>
+</ol>
+<pre class="r"><code>ggsave(filename = &quot;XXX&quot;, 
+       device = &quot;XXX&quot;, 
+       plot = XXX,
+       width = 4, 
+       height = 4, 
+       units = &quot;in&quot;)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Probiere ein paar Sachen aus:</li>
 </ol>
 <ul>
 <li>Verändere <code>width</code> und <code>height</code> in der <code>ggsave()</code> Funktion.</li>
@@ -664,6 +883,9 @@ ggplot(data = mpg,
 </div>
 <div id="datensätze" class="section level2">
 <h2>Datensätze</h2>
+<pre class="r"><code>library(tidyverse)
+library(ggthemes)
+mcdonalds &lt;- read_csv(&quot;1_Data/mcdonalds.csv&quot;)</code></pre>
 <table>
 <thead>
 <tr class="header">

@@ -71,7 +71,7 @@ Am Ende des Practicals wirst du wissen wie man:
 
 ### A - Setup
 
-1. Öffne dein `TheRBootcamp` R Projekt. Es sollte die Ordner `1_Data`, `2_Assets`, und `3_Markdown` enthalten. 
+1. Öffne dein `TheRBootcamp` R Projekt. Es sollte die Ordner `1_Data`, `2_Code`, und `3_Figures` enthalten. 
 
 2. Öffne ein neues RMarkdown Skript und wähle das Template "HTML" aus (siehe screenshot).
 
@@ -81,7 +81,7 @@ Am Ende des Practicals wirst du wissen wie man:
 
 3. Trage als Titel `Bericht Berlin 2018/2019` ein.
 
-3. Speichere das neue Markdown Skript unter dem Namen `Airbnb_level_one.Rmd` im `3_Markdown` Ordner ab.
+3. Speichere das neue Markdown Skript unter dem Namen `Airbnb_level_one.Rmd` im `2_Code` Ordner ab.
 
 4. Lösche alles unterhalb des `setup` Code Chunks.
 
