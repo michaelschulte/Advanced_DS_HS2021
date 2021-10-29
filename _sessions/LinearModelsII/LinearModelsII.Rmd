@@ -210,32 +210,6 @@ lm(Nächte_log ~ Region,
 ]
 
 .pull-right5[
-```{r, echo = F, fig.width = 3.5, fig.height = 3}
-
-tour %>%
-  ggplot(aes(x = Region, 
-             y = Nächte)) +
-  scale_y_continuous(trans = 'log2') + 
-  geom_boxplot() +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-```
-]
-
-
----
-
-# Multiple Kategorien
-
-.pull-left4[
-<ul>
-  <li class="m1"><span>Bei mehr als zwei Kategorien, werden <high><mono>k - 1</mono> Dummyvariablen</high> erstellt.</span></li>
-  <li class="m2"><span>Anonsten ändert sich nichts.</span></li>
-</ul>
-]
-
-.pull-right5[
 
 <p align="center">
 
