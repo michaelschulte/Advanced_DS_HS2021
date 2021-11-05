@@ -39,8 +39,7 @@ output:
 || Lineare Modelle II |[slides](_sessions/LinearModelsII/LinearModelsII.html)|[practical](_sessions/LinearModelsII/LinearModelsII_practical.html)| [solutions](_sessions/StatistikII/StatistikII_practical_solutions.html)|
 || Reporting II | [slides](_sessions/ReportingII/ReportingII.html)| [practical](_sessions/ReportingII/ReportingII_practical.html)||
 ||Projekt Arbeit||||
-|05.11.| Recap |||
-|| Reporting III | [slides](_sessions/ReportingIII/ReportingIII.html)| [practical](_sessions/ReportingIII/ReportingIII_practical.html)||
+|05.11.| Reporting III | [slides](_sessions/ReportingIII/ReportingIII.html)|| [practical](_sessions/ReportingIII/ReportingIII_practical.html)||
 ||Projekt Arbeit||||
 ||LV Evaluation|[Evaluation](https://scanserveruls.unibe.ch/evasys/online.php?pswd=Y81PX)|||
 |26.11.| Projektpräsentationen || <!--[feedback](https://forms.gle/38LagXxyH2cMHynt8)-->| 
