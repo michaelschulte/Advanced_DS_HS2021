@@ -1,4 +1,4 @@
-# September 2021
+# Datascience Installation
 # http://therbootcamp.github.io
 
 # Skript um alle nötigen Pakete zu installieren
@@ -40,7 +40,7 @@ Bootcamp_package_installation <- function() {
     "gridExtra"
   )
   
-  message("Welcome to Advanced DS!")
+  message("Welcome to DS!")
   message("We will now install some packages - this could take a while ...")
   
   critical_not_installed <- c()
@@ -121,7 +121,7 @@ Bootcamp_package_installation <- function() {
   
   
   message("--------------------------------")
-  message("See you in Advanced DS!")
+  message("See you in the course!")
   message("michael.schulte@unibe.ch")
   message("--------------------------------")
   
